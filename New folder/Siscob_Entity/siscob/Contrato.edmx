@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Contrato.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ContratoStoreContainer">
+    <EntitySet Name="ContratoSet" EntityType="Contrato.Store.ContratoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmpresaSet" EntityType="Contrato.Store.EmpresaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DocumentoSet" EntityType="Contrato.Store.DocumentoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FuncionarioSet" EntityType="Contrato.Store.FuncionarioSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PagamentoSet" EntityType="Contrato.Store.PagamentoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClienteSet" EntityType="Contrato.Store.ClienteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClienteContrato" EntityType="Contrato.Store.ClienteContrato" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="DocumentoContrato" Association="Contrato.Store.DocumentoContrato">
+      <End Role="Documento" EntitySet="DocumentoSet" />
+      <End Role="Contrato" EntitySet="ContratoSet" />
+    </AssociationSet>
+    <AssociationSet Name="EmpresaContrato" Association="Contrato.Store.EmpresaContrato">
+      <End Role="Empresa" EntitySet="EmpresaSet" />
+      <End Role="Contrato" EntitySet="ContratoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ContratoPagamento" Association="Contrato.Store.ContratoPagamento">
+      <End Role="Contrato" EntitySet="ContratoSet" />
+      <End Role="Pagamento" EntitySet="PagamentoSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClienteContrato_Cliente" Association="Contrato.Store.FK_ClienteContrato_Cliente">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="ClienteContrato" EntitySet="ClienteContrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClienteContrato_Contrato" Association="Contrato.Store.FK_ClienteContrato_Contrato">
+      <End Role="Contrato" EntitySet="ContratoSet" />
+      <End Role="ClienteContrato" EntitySet="ClienteContrato" />
+    </AssociationSet>
+    <AssociationSet Name="ClientePagamento" Association="Contrato.Store.ClientePagamento">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Pagamento" EntitySet="PagamentoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteCliente" Association="Contrato.Store.ClienteCliente">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Cliente1" EntitySet="ClienteSet" />
+    </AssociationSet>
+    <AssociationSet Name="ContratoFuncionario" Association="Contrato.Store.ContratoFuncionario">
+      <End Role="Contrato" EntitySet="ContratoSet" />
+      <End Role="Funcionario" EntitySet="FuncionarioSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ContratoSet">
+    <Key>
+      <PropertyRef Name="IdContrato" />
+    </Key>
+    <Property Name="IdContrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomeTitular" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="ValorContrato" Type="float" Nullable="false" />
+    <Property Name="Garantia" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="EmpresaIdEmpresa" Type="int" Nullable="false" />
+    <Property Name="PagamentoIdPagamento" Type="int" Nullable="false" />
+    <Property Name="Funcionario1_IdFuncionario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmpresaSet">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdEmpresa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomeEmpresa" Type="nvarchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="DocumentoSet">
+    <Key>
+      <PropertyRef Name="IdDocumento" />
+    </Key>
+    <Property Name="IdDocumento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="Contrato_IdContrato" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FuncionarioSet">
+    <Key>
+      <PropertyRef Name="IdFuncionario" />
+    </Key>
+    <Property Name="IdFuncionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="login" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="Senha" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="Funcao" Type="nvarchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="PagamentoSet">
+    <Key>
+      <PropertyRef Name="IdPagamento" />
+    </Key>
+    <Property Name="IdPagamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ValorIntegralDaParcela" Type="float" Nullable="false" />
+    <Property Name="ValorEmAberto" Type="float" Nullable="false" />
+    <Property Name="ContratoIdContrato" Type="int" Nullable="false" />
+    <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClienteSet">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomeCompleto" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="CPF" Type="nvarchar" Nullable="false" MaxLength="11" />
+    <Property Name="CNPJ" Type="nvarchar" Nullable="false" MaxLength="14" />
+    <Property Name="Endereco" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="SituacaoJuridica" Type="int" Nullable="false" />
+    <Property Name="Categoria" Type="int" Nullable="false" />
+    <Property Name="Associados" Type="int" Nullable="false" />
+    <Property Name="ClienteIdCliente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClienteContrato">
+    <Key>
+      <PropertyRef Name="Cliente_IdCliente" />
+      <PropertyRef Name="Contrato_IdContrato" />
+    </Key>
+    <Property Name="Cliente_IdCliente" Type="int" Nullable="false" />
+    <Property Name="Contrato_IdContrato" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="DocumentoContrato">
+    <End Role="Documento" Type="Contrato.Store.DocumentoSet" Multiplicity="*" />
+    <End Role="Contrato" Type="Contrato.Store.ContratoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Contrato">
+        <PropertyRef Name="IdContrato" />
+      </Principal>
+      <Dependent Role="Documento">
+        <PropertyRef Name="Contrato_IdContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmpresaContrato">
+    <End Role="Empresa" Type="Contrato.Store.EmpresaSet" Multiplicity="1" />
+    <End Role="Contrato" Type="Contrato.Store.ContratoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="EmpresaIdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContratoPagamento">
+    <End Role="Contrato" Type="Contrato.Store.ContratoSet" Multiplicity="1" />
+    <End Role="Pagamento" Type="Contrato.Store.PagamentoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrato">
+        <PropertyRef Name="IdContrato" />
+      </Principal>
+      <Dependent Role="Pagamento">
+        <PropertyRef Name="ContratoIdContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientePagamento">
+    <End Role="Cliente" Type="Contrato.Store.ClienteSet" Multiplicity="1" />
+    <End Role="Pagamento" Type="Contrato.Store.PagamentoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Pagamento">
+        <PropertyRef Name="ClienteIdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClienteCliente">
+    <End Role="Cliente" Type="Contrato.Store.ClienteSet" Multiplicity="1" />
+    <End Role="Cliente1" Type="Contrato.Store.ClienteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Cliente1">
+        <PropertyRef Name="ClienteIdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContratoFuncionario">
+    <End Role="Contrato" Type="Contrato.Store.ContratoSet" Multiplicity="*" />
+    <End Role="Funcionario" Type="Contrato.Store.FuncionarioSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Funcionario">
+        <PropertyRef Name="IdFuncionario" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="Funcionario1_IdFuncionario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClienteContrato_Cliente">
+    <End Role="Cliente" Type="Contrato.Store.ClienteSet" Multiplicity="1" />
+    <End Role="ClienteContrato" Type="Contrato.Store.ClienteContrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="ClienteContrato">
+        <PropertyRef Name="Cliente_IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClienteContrato_Contrato">
+    <End Role="ClienteContrato" Type="Contrato.Store.ClienteContrato" Multiplicity="*" />
+    <End Role="Contrato" Type="Contrato.Store.ContratoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Contrato">
+        <PropertyRef Name="IdContrato" />
+      </Principal>
+      <Dependent Role="ClienteContrato">
+        <PropertyRef Name="Contrato_IdContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Contrato" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ContratoContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ContratoSet" EntityType="Contrato.Contrato" />
+          <EntitySet Name="EmpresaSet" EntityType="Contrato.Empresa" />
+          <EntitySet Name="DocumentoSet" EntityType="Contrato.Documento" />
+          <AssociationSet Name="DocumentoContrato" Association="Contrato.DocumentoContrato">
+            <End Role="Documento" EntitySet="DocumentoSet" />
+            <End Role="Contrato" EntitySet="ContratoSet" />
+          </AssociationSet>
+          <AssociationSet Name="EmpresaContrato" Association="Contrato.EmpresaContrato">
+            <End Role="Empresa" EntitySet="EmpresaSet" />
+            <End Role="Contrato" EntitySet="ContratoSet" />
+          </AssociationSet>
+          <EntitySet Name="FuncionarioSet" EntityType="Contrato.Funcionario" />
+          <EntitySet Name="PagamentoSet" EntityType="Contrato.Pagamento" />
+          <AssociationSet Name="ContratoPagamento" Association="Contrato.ContratoPagamento">
+            <End Role="Contrato" EntitySet="ContratoSet" />
+            <End Role="Pagamento" EntitySet="PagamentoSet" />
+          </AssociationSet>
+          <EntitySet Name="ClienteSet" EntityType="Contrato.Cliente" />
+          <AssociationSet Name="ClienteContrato" Association="Contrato.ClienteContrato">
+            <End Role="Cliente" EntitySet="ClienteSet" />
+            <End Role="Contrato" EntitySet="ContratoSet" />
+          </AssociationSet>
+          <AssociationSet Name="ClientePagamento" Association="Contrato.ClientePagamento">
+            <End Role="Cliente" EntitySet="ClienteSet" />
+            <End Role="Pagamento" EntitySet="PagamentoSet" />
+          </AssociationSet>
+          <AssociationSet Name="ClienteCliente" Association="Contrato.ClienteCliente">
+            <End Role="Cliente" EntitySet="ClienteSet" />
+            <End Role="Cliente1" EntitySet="ClienteSet" />
+          </AssociationSet>
+          <AssociationSet Name="ContratoFuncionario" Association="Contrato.ContratoFuncionario">
+            <End Role="Contrato" EntitySet="ContratoSet" />
+            <End Role="Funcionario" EntitySet="FuncionarioSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Contrato">
+          <Key>
+            <PropertyRef Name="IdContrato" />
+          </Key>
+          <Property Name="IdContrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomeTitular" Type="String" Nullable="false" FixedLength="false" MaxLength="45" />
+          <Property Name="ValorContrato" Type="Double" Nullable="false" />
+          <Property Name="Garantia" Type="String" Nullable="false" MaxLength="45" />
+          <NavigationProperty Name="Documento" Relationship="Contrato.DocumentoContrato" FromRole="Contrato" ToRole="Documento" />
+          <NavigationProperty Name="Empresa" Relationship="Contrato.EmpresaContrato" FromRole="Contrato" ToRole="Empresa" />
+          <Property Name="EmpresaIdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="PagamentoIdPagamento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pagamento" Relationship="Contrato.ContratoPagamento" FromRole="Contrato" ToRole="Pagamento" />
+          <NavigationProperty Name="Cliente" Relationship="Contrato.ClienteContrato" FromRole="Contrato" ToRole="Cliente" />
+          <NavigationProperty Name="Funcionario1" Relationship="Contrato.ContratoFuncionario" FromRole="Contrato" ToRole="Funcionario" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomeEmpresa" Type="String" Nullable="false" MaxLength="45" />
+          <NavigationProperty Name="Contrato" Relationship="Contrato.EmpresaContrato" FromRole="Empresa" ToRole="Contrato" />
+        </EntityType>
+        <EntityType Name="Documento">
+          <Key>
+            <PropertyRef Name="IdDocumento" />
+          </Key>
+          <Property Name="IdDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="45" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contrato" Relationship="Contrato.DocumentoContrato" FromRole="Documento" ToRole="Contrato" />
+        </EntityType>
+        <Association Name="DocumentoContrato">
+          <End Type="Contrato.Documento" Role="Documento" Multiplicity="*" />
+          <End Type="Contrato.Contrato" Role="Contrato" Multiplicity="1" />
+        </Association>
+        <Association Name="EmpresaContrato">
+          <End Type="Contrato.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="Contrato.Contrato" Role="Contrato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="IdEmpresa" />
+            </Principal>
+            <Dependent Role="Contrato">
+              <PropertyRef Name="EmpresaIdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Funcionario">
+          <Key>
+            <PropertyRef Name="IdFuncionario" />
+          </Key>
+          <Property Name="IdFuncionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="45" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="45" />
+          <Property Name="Senha" Type="String" Nullable="false" MaxLength="45" />
+          <Property Name="Funcao" Type="String" Nullable="false" MaxLength="45" />
+          <NavigationProperty Name="Contrato1" Relationship="Contrato.ContratoFuncionario" FromRole="Funcionario" ToRole="Contrato" />
+        </EntityType>
+        <EntityType Name="Pagamento">
+          <Key>
+            <PropertyRef Name="IdPagamento" />
+          </Key>
+          <Property Name="IdPagamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValorIntegralDaParcela" Type="Double" Nullable="false" />
+          <Property Name="ValorEmAberto" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Contrato" Relationship="Contrato.ContratoPagamento" FromRole="Pagamento" ToRole="Contrato" />
+          <Property Name="ContratoIdContrato" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Contrato.ClientePagamento" FromRole="Pagamento" ToRole="Cliente" />
+          <Property Name="ClienteIdCliente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ContratoPagamento">
+          <End Type="Contrato.Contrato" Role="Contrato" Multiplicity="1" />
+          <End Type="Contrato.Pagamento" Role="Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrato">
+              <PropertyRef Name="IdContrato" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="ContratoIdContrato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomeCompleto" Type="String" Nullable="false" MaxLength="45" />
+          <Property Name="CPF" Type="String" Nullable="false" MaxLength="11" />
+          <Property Name="CNPJ" Type="String" Nullable="false" MaxLength="14" />
+          <Property Name="Endereco" Type="String" Nullable="false" MaxLength="45" />
+          <Property Name="SituacaoJuridica" Type="Int32" Nullable="false" />
+          <Property Name="Categoria" Type="Int32" Nullable="false" />
+          <Property Name="Associados" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contrato" Relationship="Contrato.ClienteContrato" FromRole="Cliente" ToRole="Contrato" />
+          <NavigationProperty Name="Pagamento" Relationship="Contrato.ClientePagamento" FromRole="Cliente" ToRole="Pagamento" />
+          <NavigationProperty Name="Cliente2" Relationship="Contrato.ClienteCliente" FromRole="Cliente" ToRole="Cliente1" />
+          <NavigationProperty Name="Cliente1" Relationship="Contrato.ClienteCliente" FromRole="Cliente1" ToRole="Cliente" />
+          <Property Name="ClienteIdCliente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ClienteContrato">
+          <End Type="Contrato.Cliente" Role="Cliente" Multiplicity="*" />
+          <End Type="Contrato.Contrato" Role="Contrato" Multiplicity="*" />
+        </Association>
+        <Association Name="ClientePagamento">
+          <End Type="Contrato.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="Contrato.Pagamento" Role="Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="ClienteIdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClienteCliente">
+          <End Type="Contrato.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="Contrato.Cliente" Role="Cliente1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="Cliente1">
+              <PropertyRef Name="ClienteIdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContratoFuncionario">
+          <End Type="Contrato.Contrato" Role="Contrato" Multiplicity="*" />
+          <End Type="Contrato.Funcionario" Role="Funcionario" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ContratoStoreContainer" CdmEntityContainer="ContratoContext">
+    <EntitySetMapping Name="ContratoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Contrato)">
+        <MappingFragment StoreEntitySet="ContratoSet">
+          <ScalarProperty Name="IdContrato" ColumnName="IdContrato" />
+          <ScalarProperty Name="NomeTitular" ColumnName="NomeTitular" />
+          <ScalarProperty Name="ValorContrato" ColumnName="ValorContrato" />
+          <ScalarProperty Name="Garantia" ColumnName="Garantia" />
+          <ScalarProperty Name="EmpresaIdEmpresa" ColumnName="EmpresaIdEmpresa" />
+          <ScalarProperty Name="PagamentoIdPagamento" ColumnName="PagamentoIdPagamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpresaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Empresa)">
+        <MappingFragment StoreEntitySet="EmpresaSet">
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="NomeEmpresa" ColumnName="NomeEmpresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Documento)">
+        <MappingFragment StoreEntitySet="DocumentoSet">
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FuncionarioSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Funcionario)">
+        <MappingFragment StoreEntitySet="FuncionarioSet">
+          <ScalarProperty Name="IdFuncionario" ColumnName="IdFuncionario" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Funcao" ColumnName="Funcao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagamentoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Pagamento)">
+        <MappingFragment StoreEntitySet="PagamentoSet">
+          <ScalarProperty Name="IdPagamento" ColumnName="IdPagamento" />
+          <ScalarProperty Name="ValorIntegralDaParcela" ColumnName="ValorIntegralDaParcela" />
+          <ScalarProperty Name="ValorEmAberto" ColumnName="ValorEmAberto" />
+          <ScalarProperty Name="ContratoIdContrato" ColumnName="ContratoIdContrato" />
+          <ScalarProperty Name="ClienteIdCliente" ColumnName="ClienteIdCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClienteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Cliente)">
+        <MappingFragment StoreEntitySet="ClienteSet">
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="NomeCompleto" ColumnName="NomeCompleto" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+          <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+          <ScalarProperty Name="SituacaoJuridica" ColumnName="SituacaoJuridica" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Associados" ColumnName="Associados" />
+          <ScalarProperty Name="ClienteIdCliente" ColumnName="ClienteIdCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DocumentoContrato" TypeName="Contrato.DocumentoContrato" StoreEntitySet="DocumentoSet">
+      <EndProperty Name="Contrato">
+        <ScalarProperty Name="IdContrato" ColumnName="Contrato_IdContrato" />
+      </EndProperty>
+      <EndProperty Name="Documento">
+        <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClienteContrato" TypeName="Contrato.ClienteContrato" StoreEntitySet="ClienteContrato">
+      <EndProperty Name="Cliente">
+        <ScalarProperty Name="IdCliente" ColumnName="Cliente_IdCliente" />
+      </EndProperty>
+      <EndProperty Name="Contrato">
+        <ScalarProperty Name="IdContrato" ColumnName="Contrato_IdContrato" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ContratoFuncionario" TypeName="Contrato.ContratoFuncionario" StoreEntitySet="ContratoSet">
+      <EndProperty Name="Funcionario">
+        <ScalarProperty Name="IdFuncionario" ColumnName="Funcionario1_IdFuncionario" />
+      </EndProperty>
+      <EndProperty Name="Contrato">
+        <ScalarProperty Name="IdContrato" ColumnName="IdContrato" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

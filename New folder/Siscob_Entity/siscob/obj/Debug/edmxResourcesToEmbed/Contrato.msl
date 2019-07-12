@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ContratoStoreContainer" CdmEntityContainer="ContratoContext">
+    <EntitySetMapping Name="ContratoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Contrato)">
+        <MappingFragment StoreEntitySet="ContratoSet">
+          <ScalarProperty Name="IdContrato" ColumnName="IdContrato" />
+          <ScalarProperty Name="NomeTitular" ColumnName="NomeTitular" />
+          <ScalarProperty Name="ValorContrato" ColumnName="ValorContrato" />
+          <ScalarProperty Name="Garantia" ColumnName="Garantia" />
+          <ScalarProperty Name="EmpresaIdEmpresa" ColumnName="EmpresaIdEmpresa" />
+          <ScalarProperty Name="PagamentoIdPagamento" ColumnName="PagamentoIdPagamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmpresaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Empresa)">
+        <MappingFragment StoreEntitySet="EmpresaSet">
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="NomeEmpresa" ColumnName="NomeEmpresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Documento)">
+        <MappingFragment StoreEntitySet="DocumentoSet">
+          <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FuncionarioSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Funcionario)">
+        <MappingFragment StoreEntitySet="FuncionarioSet">
+          <ScalarProperty Name="IdFuncionario" ColumnName="IdFuncionario" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Funcao" ColumnName="Funcao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PagamentoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Pagamento)">
+        <MappingFragment StoreEntitySet="PagamentoSet">
+          <ScalarProperty Name="IdPagamento" ColumnName="IdPagamento" />
+          <ScalarProperty Name="ValorIntegralDaParcela" ColumnName="ValorIntegralDaParcela" />
+          <ScalarProperty Name="ValorEmAberto" ColumnName="ValorEmAberto" />
+          <ScalarProperty Name="ContratoIdContrato" ColumnName="ContratoIdContrato" />
+          <ScalarProperty Name="ClienteIdCliente" ColumnName="ClienteIdCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClienteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Contrato.Cliente)">
+        <MappingFragment StoreEntitySet="ClienteSet">
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="NomeCompleto" ColumnName="NomeCompleto" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+          <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+          <ScalarProperty Name="SituacaoJuridica" ColumnName="SituacaoJuridica" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Associados" ColumnName="Associados" />
+          <ScalarProperty Name="ClienteIdCliente" ColumnName="ClienteIdCliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DocumentoContrato" TypeName="Contrato.DocumentoContrato" StoreEntitySet="DocumentoSet">
+      <EndProperty Name="Contrato">
+        <ScalarProperty Name="IdContrato" ColumnName="Contrato_IdContrato" />
+      </EndProperty>
+      <EndProperty Name="Documento">
+        <ScalarProperty Name="IdDocumento" ColumnName="IdDocumento" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClienteContrato" TypeName="Contrato.ClienteContrato" StoreEntitySet="ClienteContrato">
+      <EndProperty Name="Cliente">
+        <ScalarProperty Name="IdCliente" ColumnName="Cliente_IdCliente" />
+      </EndProperty>
+      <EndProperty Name="Contrato">
+        <ScalarProperty Name="IdContrato" ColumnName="Contrato_IdContrato" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ContratoFuncionario" TypeName="Contrato.ContratoFuncionario" StoreEntitySet="ContratoSet">
+      <EndProperty Name="Funcionario">
+        <ScalarProperty Name="IdFuncionario" ColumnName="Funcionario1_IdFuncionario" />
+      </EndProperty>
+      <EndProperty Name="Contrato">
+        <ScalarProperty Name="IdContrato" ColumnName="IdContrato" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

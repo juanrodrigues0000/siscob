@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6cf9b2a20f3b4542906140379fdc8155" Name="Diagram1" >
+        <EntityTypeShape EntityType="Contrato.Contrato" Width="1.5" PointX="3.25" PointY="1" />
+        <EntityTypeShape EntityType="Contrato.Empresa" Width="1.5" PointX="5.875" PointY="3.5" />
+        <EntityTypeShape EntityType="Contrato.Documento" Width="1.5" PointX="3.375" PointY="4.875" />
+        <AssociationConnector Association="Contrato.DocumentoContrato" />
+        <AssociationConnector Association="Contrato.EmpresaContrato" />
+        <EntityTypeShape EntityType="Contrato.Funcionario" Width="1.75" PointX="0.5" PointY="4.5" />
+        <EntityTypeShape EntityType="Contrato.Pagamento" Width="1.5" PointX="5.75" PointY="0.5" />
+        <AssociationConnector Association="Contrato.ContratoPagamento" />
+        <EntityTypeShape EntityType="Contrato.Cliente" Width="1.5" PointX="0.625" PointY="0.5" />
+        <AssociationConnector Association="Contrato.ClienteContrato" />
+        <AssociationConnector Association="Contrato.ClientePagamento" />
+        <AssociationConnector Association="Contrato.ClienteCliente" />
+        <AssociationConnector Association="Contrato.ContratoFuncionario" ManuallyRouted="true" >
+          <ConnectorPoint PointX="3.25" PointY="4.107646484375" />
+          <ConnectorPoint PointX="2.21875" PointY="4.107646484375" />
+          <ConnectorPoint PointX="2.21875" PointY="4.5" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Contrato" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ContratoContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ContratoSet" EntityType="Contrato.Contrato" />
+    <EntitySet Name="EmpresaSet" EntityType="Contrato.Empresa" />
+    <EntitySet Name="DocumentoSet" EntityType="Contrato.Documento" />
+    <AssociationSet Name="DocumentoContrato" Association="Contrato.DocumentoContrato">
+      <End Role="Documento" EntitySet="DocumentoSet" />
+      <End Role="Contrato" EntitySet="ContratoSet" />
+    </AssociationSet>
+    <AssociationSet Name="EmpresaContrato" Association="Contrato.EmpresaContrato">
+      <End Role="Empresa" EntitySet="EmpresaSet" />
+      <End Role="Contrato" EntitySet="ContratoSet" />
+    </AssociationSet>
+    <EntitySet Name="FuncionarioSet" EntityType="Contrato.Funcionario" />
+    <EntitySet Name="PagamentoSet" EntityType="Contrato.Pagamento" />
+    <AssociationSet Name="ContratoPagamento" Association="Contrato.ContratoPagamento">
+      <End Role="Contrato" EntitySet="ContratoSet" />
+      <End Role="Pagamento" EntitySet="PagamentoSet" />
+    </AssociationSet>
+    <EntitySet Name="ClienteSet" EntityType="Contrato.Cliente" />
+    <AssociationSet Name="ClienteContrato" Association="Contrato.ClienteContrato">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Contrato" EntitySet="ContratoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClientePagamento" Association="Contrato.ClientePagamento">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Pagamento" EntitySet="PagamentoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteCliente" Association="Contrato.ClienteCliente">
+      <End Role="Cliente" EntitySet="ClienteSet" />
+      <End Role="Cliente1" EntitySet="ClienteSet" />
+    </AssociationSet>
+    <AssociationSet Name="ContratoFuncionario" Association="Contrato.ContratoFuncionario">
+      <End Role="Contrato" EntitySet="ContratoSet" />
+      <End Role="Funcionario" EntitySet="FuncionarioSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Contrato">
+    <Key>
+      <PropertyRef Name="IdContrato" />
+    </Key>
+    <Property Name="IdContrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomeTitular" Type="String" Nullable="false" FixedLength="false" MaxLength="45" />
+    <Property Name="ValorContrato" Type="Double" Nullable="false" />
+    <Property Name="Garantia" Type="String" Nullable="false" MaxLength="45" />
+    <NavigationProperty Name="Documento" Relationship="Contrato.DocumentoContrato" FromRole="Contrato" ToRole="Documento" />
+    <NavigationProperty Name="Empresa" Relationship="Contrato.EmpresaContrato" FromRole="Contrato" ToRole="Empresa" />
+    <Property Name="EmpresaIdEmpresa" Type="Int32" Nullable="false" />
+    <Property Name="PagamentoIdPagamento" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pagamento" Relationship="Contrato.ContratoPagamento" FromRole="Contrato" ToRole="Pagamento" />
+    <NavigationProperty Name="Cliente" Relationship="Contrato.ClienteContrato" FromRole="Contrato" ToRole="Cliente" />
+    <NavigationProperty Name="Funcionario1" Relationship="Contrato.ContratoFuncionario" FromRole="Contrato" ToRole="Funcionario" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdEmpresa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomeEmpresa" Type="String" Nullable="false" MaxLength="45" />
+    <NavigationProperty Name="Contrato" Relationship="Contrato.EmpresaContrato" FromRole="Empresa" ToRole="Contrato" />
+  </EntityType>
+  <EntityType Name="Documento">
+    <Key>
+      <PropertyRef Name="IdDocumento" />
+    </Key>
+    <Property Name="IdDocumento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="45" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Contrato" Relationship="Contrato.DocumentoContrato" FromRole="Documento" ToRole="Contrato" />
+  </EntityType>
+  <Association Name="DocumentoContrato">
+    <End Type="Contrato.Documento" Role="Documento" Multiplicity="*" />
+    <End Type="Contrato.Contrato" Role="Contrato" Multiplicity="1" />
+  </Association>
+  <Association Name="EmpresaContrato">
+    <End Type="Contrato.Empresa" Role="Empresa" Multiplicity="1" />
+    <End Type="Contrato.Contrato" Role="Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="EmpresaIdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Funcionario">
+    <Key>
+      <PropertyRef Name="IdFuncionario" />
+    </Key>
+    <Property Name="IdFuncionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="45" />
+    <Property Name="login" Type="String" Nullable="false" MaxLength="45" />
+    <Property Name="Senha" Type="String" Nullable="false" MaxLength="45" />
+    <Property Name="Funcao" Type="String" Nullable="false" MaxLength="45" />
+    <NavigationProperty Name="Contrato1" Relationship="Contrato.ContratoFuncionario" FromRole="Funcionario" ToRole="Contrato" />
+  </EntityType>
+  <EntityType Name="Pagamento">
+    <Key>
+      <PropertyRef Name="IdPagamento" />
+    </Key>
+    <Property Name="IdPagamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ValorIntegralDaParcela" Type="Double" Nullable="false" />
+    <Property Name="ValorEmAberto" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Contrato" Relationship="Contrato.ContratoPagamento" FromRole="Pagamento" ToRole="Contrato" />
+    <Property Name="ContratoIdContrato" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Contrato.ClientePagamento" FromRole="Pagamento" ToRole="Cliente" />
+    <Property Name="ClienteIdCliente" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="ContratoPagamento">
+    <End Type="Contrato.Contrato" Role="Contrato" Multiplicity="1" />
+    <End Type="Contrato.Pagamento" Role="Pagamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrato">
+        <PropertyRef Name="IdContrato" />
+      </Principal>
+      <Dependent Role="Pagamento">
+        <PropertyRef Name="ContratoIdContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomeCompleto" Type="String" Nullable="false" MaxLength="45" />
+    <Property Name="CPF" Type="String" Nullable="false" MaxLength="11" />
+    <Property Name="CNPJ" Type="String" Nullable="false" MaxLength="14" />
+    <Property Name="Endereco" Type="String" Nullable="false" MaxLength="45" />
+    <Property Name="SituacaoJuridica" Type="Int32" Nullable="false" />
+    <Property Name="Categoria" Type="Int32" Nullable="false" />
+    <Property Name="Associados" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Contrato" Relationship="Contrato.ClienteContrato" FromRole="Cliente" ToRole="Contrato" />
+    <NavigationProperty Name="Pagamento" Relationship="Contrato.ClientePagamento" FromRole="Cliente" ToRole="Pagamento" />
+    <NavigationProperty Name="Cliente2" Relationship="Contrato.ClienteCliente" FromRole="Cliente" ToRole="Cliente1" />
+    <NavigationProperty Name="Cliente1" Relationship="Contrato.ClienteCliente" FromRole="Cliente1" ToRole="Cliente" />
+    <Property Name="ClienteIdCliente" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="ClienteContrato">
+    <End Type="Contrato.Cliente" Role="Cliente" Multiplicity="*" />
+    <End Type="Contrato.Contrato" Role="Contrato" Multiplicity="*" />
+  </Association>
+  <Association Name="ClientePagamento">
+    <End Type="Contrato.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="Contrato.Pagamento" Role="Pagamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Pagamento">
+        <PropertyRef Name="ClienteIdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClienteCliente">
+    <End Type="Contrato.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="Contrato.Cliente" Role="Cliente1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Cliente1">
+        <PropertyRef Name="ClienteIdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContratoFuncionario">
+    <End Type="Contrato.Contrato" Role="Contrato" Multiplicity="*" />
+    <End Type="Contrato.Funcionario" Role="Funcionario" Multiplicity="1" />
+  </Association>
+</Schema>
