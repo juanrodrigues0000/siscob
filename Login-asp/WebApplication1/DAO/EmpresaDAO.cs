@@ -4,18 +4,18 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using siscob;
+using WebApplication1.Context;
 
 namespace WebApplication1.DAO
 {
     public class EmpresaDAO : IDisposable
     {
-        {
         private SqlConnection conexao;
 
         public void ConexaoEmpresaDAO()
         {
-       //     this.conexao = new SqlConnection(/////////////////);
-       //     this.conexao.Open();
+            this.conexao = new SqlConnection(SiscobContext.StringDeConexao);
+            this.conexao.Open();
         }
 
         public void Dispose()
@@ -26,16 +26,12 @@ namespace WebApplication1.DAO
         internal void Adicionar(Empresa e)
         {
                 var insertCmd = conexao.CreateCommand();
-                insertCmd.CommandText = "INSERT INTO empresas (IdEmpresa, NomeEmpresa) VALUES (@idEmpresa, @nomeEmpresa)";
+                insertCmd.CommandText = "INSERT INTO empresas (NomeEmpresa) VALUES (@nomeEmpresa)";
 
-                //Id precisa ser inserido automático
+                //↑↑↑↑ removidos ID para serem inseridos automaticos
 
-                var paramNome = new SqlParameter("nomeEmpresa", e.NomeEmpresa);
-                insertCmd.Parameters.Add(paramNome);
-
-
-                // Outros Atributos podem vir aqui
-
+                var paramNomeEmpresa = new SqlParameter("nomeEmpresa", e.NomeEmpresa);
+                insertCmd.Parameters.Add(paramNomeEmpresa);
 
                 insertCmd.ExecuteNonQuery();
         }
@@ -45,11 +41,9 @@ namespace WebApplication1.DAO
                 var updateCmd = conexao.CreateCommand();
                 updateCmd.CommandText = "UPDATE Empresas SET Nome = @nomeEmpresa WHERE IdEmpresa = @idEmpresa";
 
-                var paramNome = new SqlParameter("nomeEmpresa", e.NomeEmpresa);
-                //var paramId = new SqlParameter("idEmpresa", p.Id);
+                var paramNomeEmpresa = new SqlParameter("nomeEmpresa", e.NomeEmpresa);
 
-                updateCmd.Parameters.Add(paramNome);
-                //updateCmd.Parameters.Add(paramId);
+                updateCmd.Parameters.Add(paramNomeEmpresa);
 
                 updateCmd.ExecuteNonQuery();
 
@@ -61,8 +55,8 @@ namespace WebApplication1.DAO
                 var deleteCmd = conexao.CreateCommand();
                 deleteCmd.CommandText = "DELETE FROM Empresas WHERE IdEmpresa = @idEmpresa";
 
-                var paramId = new SqlParameter("idEmpresa", e.IdEmpresa);
-                deleteCmd.Parameters.Add(paramId);
+                var paramNomeEmpresa = new SqlParameter("idEmpresa", e.NomeEmpresa);
+                deleteCmd.Parameters.Add(paramNomeEmpresa);
 
                 deleteCmd.ExecuteNonQuery();
         }

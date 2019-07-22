@@ -7,9 +7,9 @@ namespace siscob
     {
         public Contrato()
         {
-            this.Documento = new HashSet<Documento>();
-            this.Pagamento = new HashSet<Pagamento>();
-            this.Cliente = new HashSet<Cliente>();
+            this.Documentos = new HashSet<Documento>();
+            this.Pagamentos = new HashSet<Pagamento>();
+            this.Clientes = new HashSet<Cliente>();
         }
     
         public int IdContrato { get; set; }
@@ -18,11 +18,11 @@ namespace siscob
         public string Garantia { get; set; }
         public int EmpresaIdEmpresa { get; set; }
         public int PagamentoIdPagamento { get; set; }
-    
-        public virtual ICollection<Documento> Documento { get; set; }
-        public virtual Empresa Empresa { get; set; }
-        public virtual ICollection<Pagamento> Pagamento { get; set; }
-        public virtual ICollection<Cliente> Cliente { get; set; }
-        public virtual Funcionario Funcionario1 { get; set; }
+        public virtual string Empresa { get; set; }
+        public virtual string Funcionario { get; set; }
+
+        public virtual ICollection<Documento> Documentos { get; set; }
+        public virtual ICollection<Pagamento> Pagamentos { get; set; }
+        public virtual ICollection<Cliente> Clientes { get; set; }
     }
 }

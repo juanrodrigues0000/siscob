@@ -4,18 +4,18 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using siscob;
+using WebApplication1.Context;
 
 namespace WebApplication1.DAO
 {
     public class DocumentoDAO : IDisposable
     {
-        {
         private SqlConnection conexao;
 
         public void ConexaoDocumentoDAO()
         {
-            //     this.conexao = new SqlConnection(/////////////////);
-            //     this.conexao.Open();
+            this.conexao = new SqlConnection(SiscobContext.StringDeConexao);
+            this.conexao.Open();
         }
 
         public void Dispose()
@@ -26,17 +26,15 @@ namespace WebApplication1.DAO
         internal void Adicionar(Documento d)
         {
             var insertCmd = conexao.CreateCommand();
-            insertCmd.CommandText = "INSERT INTO Documentos (IdDocumento, Descricao, IdCliente) VALUES (@idDocumento, @descricao, @idCliente)";
+            insertCmd.CommandText = "INSERT INTO Documentos (Descricao, IdCliente) VALUES (@descricao, @idCliente)";
 
-            //Id precisa ser inserido automático
+            //↑↑↑↑ removidos ID para serem inseridos automaticos
 
             var paramDescricao = new SqlParameter("descricao", d.Descricao);
             insertCmd.Parameters.Add(paramDescricao);
 
-            // var paramIdCliente = new SqlParameter("idCliente", d.IdCliente);
-            //insert.Cmd.Parameteres.Add(paramIdCliente);
-
-                                //  ↑↑↑↑ Não sei se vai ser inserido automático ↑↑↑↑
+            var paramIdCliente = new SqlParameter("idCliente", d.IdCliente);
+            insertCmd.Parameters.Add(paramIdCliente);
 
             insertCmd.ExecuteNonQuery();
         }
@@ -46,14 +44,11 @@ namespace WebApplication1.DAO
             var updateCmd = conexao.CreateCommand();
             updateCmd.CommandText = "UPDATE Documentos SET Descricao = @Descricao, IdCliente = @idCliente  WHERE IdDocumento = @idDocumento";
 
-            //var paramIdDocumento = new SqlParameter("idDocumento", d.IdDocumento);
-            //updateCmd.Parameters.Add(paramIdDocumento);
-
             var paramDescricao = new SqlParameter("descricao", d.Descricao);
             updateCmd.Parameters.Add(paramDescricao);
 
-            //var paramIdCliente = new SqlParameter("idCliente", d.IdCliente);
-            //updateCmd.Parameters.Add(paramIdCliente);
+            var paramIdCliente = new SqlParameter("idCliente", d.IdCliente);
+            updateCmd.Parameters.Add(paramIdCliente);
 
             updateCmd.ExecuteNonQuery();
 
@@ -64,9 +59,6 @@ namespace WebApplication1.DAO
 
             var deleteCmd = conexao.CreateCommand();
             deleteCmd.CommandText = "DELETE FROM Documentos WHERE IdDocumento = @idDocumento";
-
-            var paramIdDocumento = new SqlParameter("idDocumento", d.IdDocumento);
-            deleteCmd.Parameters.Add(paramIdDocumento);
 
             var paramDescricao = new SqlParameter("descricao", d.Descricao);
             deleteCmd.Parameters.Add(paramDescricao);
