@@ -5,80 +5,42 @@ using System.Linq;
 using System.Web;
 using siscob;
 using WebApplication1.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.DAO
 {
     public class EmpresaDAO : IDisposable
     {
-        private SqlConnection conexao;
 
-        public void ConexaoEmpresaDAO()
+        public void Adicionar(Empresa empresa)
         {
-            this.conexao = new SqlConnection(SiscobContext.StringDeConexao);
-            this.conexao.Open();
+            using (var contexto = new SiscobContext())
+            {
+                contexto.Empresas.Add(empresa);
+                contexto.SaveChanges();
+            }
         }
-
         public void Dispose()
         {
-            this.conexao.Close();
-        }
-
-        internal void Adicionar(Empresa e)
-        {
-                var insertCmd = conexao.CreateCommand();
-                insertCmd.CommandText = "INSERT INTO empresas (NomeEmpresa) VALUES (@nomeEmpresa)";
-
-                //↑↑↑↑ removidos ID para serem inseridos automaticos
-
-                var paramNomeEmpresa = new SqlParameter("nomeEmpresa", e.NomeEmpresa);
-                insertCmd.Parameters.Add(paramNomeEmpresa);
-
-                insertCmd.ExecuteNonQuery();
-        }
-
-        internal void Atualizar(Empresa e)
-        {
-                var updateCmd = conexao.CreateCommand();
-                updateCmd.CommandText = "UPDATE Empresas SET Nome = @nomeEmpresa WHERE IdEmpresa = @idEmpresa";
-
-                var paramNomeEmpresa = new SqlParameter("nomeEmpresa", e.NomeEmpresa);
-
-                updateCmd.Parameters.Add(paramNomeEmpresa);
-
-                updateCmd.ExecuteNonQuery();
-
-        }
-
-        internal void Remover(Empresa e)
-        {
-
-                var deleteCmd = conexao.CreateCommand();
-                deleteCmd.CommandText = "DELETE FROM Empresas WHERE IdEmpresa = @idEmpresa";
-
-                var paramNomeEmpresa = new SqlParameter("idEmpresa", e.NomeEmpresa);
-                deleteCmd.Parameters.Add(paramNomeEmpresa);
-
-                deleteCmd.ExecuteNonQuery();
-        }
-
-        internal IList<Empresa> Empresas()
-        {
-            var lista = new List<Empresa>();
-
-            var selectCmd = conexao.CreateCommand();
-            selectCmd.CommandText = "SELECT * FROM Empresas";
-
-            var resultado = selectCmd.ExecuteReader();
-            while (resultado.Read())
+            using (var contexto = new SiscobContext())
             {
-                Empresa e = new Empresa();
-                p.IdEmpresa = Convert.ToInt32(resultado["IdEmpresa"]);
-                p.NomeEmpresa = Convert.ToString(resultado["nomeEmpresa"]);
-                lista.Add(p);
+                contexto.Dispose();
             }
-            resultado.Close();
-
-            return lista;
+        }
+        public IList<Empresa> Empresas()
+        {
+            using (var contexto = new SiscobContext())
+            {
+                return contexto.Empresas.ToList();
+            }
+        }
+        public void Remover(Empresa empresa)
+        {
+            using (var contexto = new SiscobContext())
+            {
+                contexto.Empresas.Remove(empresa);
+                contexto.SaveChanges();
+            }
         }
     }
 }
