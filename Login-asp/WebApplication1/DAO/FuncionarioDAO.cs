@@ -14,7 +14,7 @@ namespace WebApplication1.DAO
             {
                 using (var contexto = new SiscobContext())
                 {
-                    contexto.Funcionarios.Add(funcionario);
+                    contexto.FuncionarioSet.Add(funcionario);
                     contexto.SaveChanges();
                 }
             }
@@ -29,14 +29,14 @@ namespace WebApplication1.DAO
             {
                 using (var contexto = new SiscobContext())
                 {
-                    return contexto.Funcionarios.ToList();
+                    return contexto.FuncionarioSet.ToList();
                 }
             }
             public void Remover(Funcionario funcionario)
             {
                 using (var contexto = new SiscobContext())
                 {
-                    contexto.Funcionarios.Remove(funcionario);
+                    contexto.FuncionarioSet.Remove(funcionario);
                     contexto.SaveChanges();
                 }
             }
@@ -45,7 +45,7 @@ namespace WebApplication1.DAO
             {
                 using (var contexto = new SiscobContext())
                 {
-                    return contexto.Funcionarios.FirstOrDefault(u => u.Nome == login && u.Senha == senha);
+                    return contexto.FuncionarioSet.FirstOrDefault(u => u.Login == login && u.Senha == senha);
                 }
             }
        }

@@ -10,27 +10,41 @@
     <meta name="viewport" content="width=device-width" />
     <title>Form</title>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.10/css/all.css'>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="~/Content/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head>
 <body>
-    <div class="row">
-        <div class="col-12 text-center">
-            <h2 class="tm-block-title mb-4">Cadastro de Empresa</h2>
-        </div>
-    </div>
-    <div>
-        <form action="Empresa/Adicionar">
-            <label for="nome">Nome da Empresa</label>
-            <input id="Mome" nome="Nome" />
 
-            <input type="submit" value="Cadastrar" />
-            </form>
+    <div class="leftbox">
+        <nav>
+            <a id="profile" class="active"><i class="fa fa-user"></i></a>
+            <a id="payment"><i class="fa fa-credit-card"></i></a>
+            <a id="subscription"><i class="fa fa-tv"></i></a>
+            <a id="privacy"><i class="fa fa-tasks"></i></a>
+            <a id="settings"><i class="fa fa-cog"></i></a>
+        </nav>
+    </div>
+
+    <div class="rightbox">
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="tm-block-title mb-4">Cadastro de Empresa</h2>
+            </div>
+        </div>
+        <div>
+            @Html.BeginForm("Adicionar", "Empresa", FormMethod.Post) { 
+                <label for="nomeEmpresa">Nome da Empresa</label>
+                <input id="nomeEmpresa" nome="nomeEmpresa" type="text" />
+
+                <input type="submit" value="Cadastrar" />
+            }
+        </div>
     </div>
 
     <!-- partial -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src="./script.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>   
+    <script src="~/Content/script.js"></script>
 
 
 </body>

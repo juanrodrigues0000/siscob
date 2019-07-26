@@ -9,12 +9,12 @@ namespace WebApplication1.Context
 {
     public class SiscobContext : DbContext, IDisposable
     {
-        public DbSet<Empresa> Empresas { get; set; }
-        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Empresa> EmpresaSet { get; set; }
+        public DbSet<Funcionario> FuncionarioSet { get; set; }
 
-        protected void Onconfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog =C:\\BENNER\\SISCOB\\NEW FOLDER\\SISCOB_ENTITY\\SISCOB\\TESTEDB.MDF; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\BENNER\\SISCOB\\NEW FOLDER\\SISCOB_ENTITY\\SISCOB\\TESTEDB.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }
 
     }

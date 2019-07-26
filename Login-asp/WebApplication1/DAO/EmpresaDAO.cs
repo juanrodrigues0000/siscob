@@ -16,7 +16,7 @@ namespace WebApplication1.DAO
         {
             using (var contexto = new SiscobContext())
             {
-                contexto.Empresas.Add(empresa);
+                contexto.EmpresaSet.Add(empresa);
                 contexto.SaveChanges();
             }
         }
@@ -31,14 +31,14 @@ namespace WebApplication1.DAO
         {
             using (var contexto = new SiscobContext())
             {
-                return contexto.Empresas.ToList();
+                return contexto.EmpresaSet.ToList();
             }
         }
         public void Remover(Empresa empresa)
         {
             using (var contexto = new SiscobContext())
             {
-                contexto.Empresas.Remove(empresa);
+                contexto.EmpresaSet.Remove(empresa);
                 contexto.SaveChanges();
             }
         }

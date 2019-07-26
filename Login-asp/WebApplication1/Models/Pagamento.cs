@@ -2,9 +2,11 @@ namespace siscob
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Pagamento
     {
+        [Key]
         public int IdPagamento { get; set; }
         public double ValorIntegralDaParcela { get; set; }
         public double ValorEmAberto { get; set; }
