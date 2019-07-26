@@ -40,5 +40,13 @@ namespace WebApplication1.DAO
                     contexto.SaveChanges();
                 }
             }
-    }
+
+            public Funcionario Busca(string login, string senha) // método para verificar a senha do funcionário que tenta logar
+            {
+                using (var contexto = new SiscobContext())
+                {
+                    return contexto.Funcionarios.FirstOrDefault(u => u.Nome == login && u.Senha == senha);
+                }
+            }
+       }
 }

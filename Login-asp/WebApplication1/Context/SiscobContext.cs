@@ -14,8 +14,8 @@ namespace WebApplication1.Context
 
         protected void Onconfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("data source=(LocalDB)\\MSSQLLocalDB;attachdbfilename=|DataDirectory|\\TesteDB.mdf;integrated security=True");
-             }
+            optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog =C:\\BENNER\\SISCOB\\NEW FOLDER\\SISCOB_ENTITY\\SISCOB\\TESTEDB.MDF; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            }
 
     }
 }
