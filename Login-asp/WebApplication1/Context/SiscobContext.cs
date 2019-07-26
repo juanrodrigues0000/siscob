@@ -7,15 +7,15 @@ using siscob;
 
 namespace WebApplication1.Context
 {
-         public class SiscobContext : DbContext, IDisposable
+    public class SiscobContext : DbContext, IDisposable
+    {
+        public DbSet<Empresa> Empresas { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
+
+        protected void Onconfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            public DbSet<Empresa> Empresas { get; set; }
-            public DbSet<Funcionario> Funcionarios { get; set; }
+            optionsBuilder.UseSqlServer("data source=(LocalDB)\\MSSQLLocalDB;attachdbfilename=|DataDirectory|\\TesteDB.mdf;integrated security=True");
+             }
 
-            protected void Onconfiguring (DbContextOptionsBuilder optionsBuilder)
-            {
-                optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Benner\\siscob\\New folder\\Siscob_Entity\\siscob\\TesteDB.mdf;Integrated Security=True;Connect Timeout=30");
-            }
-       }
+    }
 }
-

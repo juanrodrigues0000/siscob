@@ -11,16 +11,16 @@ namespace WebApplication1
     {
         static void Main(string[] args)
         {
-            GravarComEntity();
+            //GravarComEntity();
         }
 
-        private static void GravarComEntity()
-        {
-            Empresa empresa = new Empresa();
-            EmpresaDAO adicionar = new EmpresaDAO();
-            empresa.IdEmpresa = 123123;
-            empresa.NomeEmpresa = "Benner";
-            adicionar.Adicionar(empresa);
-        }
+        //private static void GravarComEntity()
+        
+            //Empresa empresa = new Empresa();
+            //EmpresaDAO adicionar = new EmpresaDAO();
+            //empresa.IdEmpresa = 123123;
+            //empresa.NomeEmpresa = "Benner";
+            //adicionar.Adicionar(empresa);
+        
     }
 }
