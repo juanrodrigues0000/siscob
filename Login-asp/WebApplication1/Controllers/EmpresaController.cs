@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication1.DAO;
 using siscob;
-
+ 
 
 namespace WebApplication1.Controllers
 {
@@ -13,15 +13,13 @@ namespace WebApplication1.Controllers
     {
         // GET: Default
         
-
         public ActionResult Adicionar(string nomeEmpresa)
         {
-
+            
             Empresa empresa = new Empresa();
             EmpresaDAO adicionar = new EmpresaDAO();
             empresa.NomeEmpresa = nomeEmpresa;
             adicionar.Adicionar(empresa);
-            
 
             return View();
         }

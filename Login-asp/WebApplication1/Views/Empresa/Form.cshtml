@@ -33,12 +33,27 @@
             </div>
         </div>
         <div>
-            @Html.BeginForm("Adicionar", "Empresa", FormMethod.Post) { 
+  
+
+                @Html.BeginForm("Adicionar", "Empresa", "FormMethod.Post") {
                 <label for="nomeEmpresa">Nome da Empresa</label>
-                <input id="nomeEmpresa" nome="nomeEmpresa" type="text" />
+                <input id="nomeEmpresa" name="nomeEmpresa" type="text" />
 
                 <input type="submit" value="Cadastrar" />
-            }
+                }
+        </div>
+        <div class="payment noshow">
+            <h1>Formulario Pagamentos</h1>
+
+        </div>
+        <div class="subscription noshow">
+            <h1>Formulario Clientes</h1>
+        </div>
+        <div class="privacy noshow">
+            <h1>Formulario Contratos</h1>
+        </div>
+        <div class="settings noshow">
+            <h1>Formulario Funcionarios</h1>
         </div>
     </div>
 

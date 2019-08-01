@@ -8,7 +8,7 @@ using WebApplication1.Context;
 
 namespace WebApplication1.DAO
 {
-       public class FuncionarioDAO
+       public class FuncionarioDAO: IDisposable
        {
             public void Adicionar(Funcionario funcionario)
             {
