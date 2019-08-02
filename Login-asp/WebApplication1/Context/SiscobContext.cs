@@ -13,6 +13,8 @@ namespace WebApplication1.Context
         public DbSet<Funcionario> FuncionarioSet { get; set; }
         public DbSet<Documento> DocumentoSet { get; set; }
         public DbSet<Cliente> ClienteSet { get; set; }
+        public DbSet<Pagamento> PagamentoSet { get; set; }
+        public DbSet<Contrato> ContratoSet { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

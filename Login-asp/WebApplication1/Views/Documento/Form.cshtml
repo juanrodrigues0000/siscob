@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Form";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.10/css/all.css'>
+    <link rel="stylesheet" href="~/Content/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+</head>
+<body>
+
+    <div>
+        @Html.BeginForm("Adicionar", "Documento", FormMethod.Post) {
+
+        <label for="descricao">Descrição do documento</label>
+        <input id="descricao" name="descricao" type="text" />
+
+        <label for="idCliente">Inserir o ID do cliente</label>
+        <input id="idCliente" name="idCliente" type="text" />
+
+
+        <input type="submit" value="Cadastrar" />
+        }
+    </div>
+
+</body>
+</html>

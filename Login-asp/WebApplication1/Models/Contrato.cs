@@ -19,9 +19,6 @@ namespace siscob
         public double ValorContrato { get; set; }
         public string Garantia { get; set; }
         public int EmpresaIdEmpresa { get; set; }
-        public int PagamentoIdPagamento { get; set; }
-        public virtual string Empresa { get; set; }
-        public virtual string Funcionario { get; set; }
 
         public virtual ICollection<Documento> Documentos { get; set; }
         public virtual ICollection<Pagamento> Pagamentos { get; set; }

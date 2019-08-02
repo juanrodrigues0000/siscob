@@ -1,0 +1,39 @@
+﻿@using WebApplication1.DAO;
+@{
+    ViewBag.Title = "Form";
+    var contratoDao = new ContratoDAO();
+    var contratos = contratoDao.Contratos();
+}
+
+<div class="tm-bg-primary-dark tm-block tm-block-settings">
+    <h2 class="tm-block-title">Cadastrar novo pagamento</h2>
+    <form action="Adicionar" method="post" class="tm-signup-form row">
+        <div class="form-group col-lg-6">
+            <label for="valorIntegralDaParcela">Valor da parcela</label>
+            <input id="valorIntegralDaParcela" name="valorIntegralDaParcela" type="text" class="form-control validate">
+        </div>
+        <div class="form-group col-lg-6">
+            <label for="valorEmAberto">Valor de parcela em aberto</label>
+            <input id="valorEmAberto" name="valorEmAberto" type="text" class="form-control validate">
+        </div>
+        <div class="form-group col-lg-6">
+            <label for="contratoIdContrato">Id do contrato</label>
+            <select class="custom-select" id="contratoIdContrato" name="contratoIdContrato">
+                @foreach (var contrato in contratos)
+                {
+                <option value="@contrato.IdContrato">@contrato.NomeTitular - @contrato.ValorContrato</option>
+                }
+            </select>
+        </div>
+        <div class="form-group col-lg-6">
+            <label for="clienteIdCliente">Id do cliente</label>
+            <input id="clienteIdCliente" name="clienteIdCliente" type="text" class="form-control validate">
+        </div>
+        <div class="form-group col-lg-6">
+            <label class="tm-hide-sm">&nbsp;</label>
+            <button type="submit" class="btn btn-primary btn-block text-uppercase">
+                Cadastrar
+            </button>
+        </div>
+    </form>
+</div>

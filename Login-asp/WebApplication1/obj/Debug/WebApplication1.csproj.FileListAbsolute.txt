@@ -69,7 +69,6 @@ C:\Benner\Siscob\Login-asp\WebApplication1\bin\System.Web.WebPages.Razor.xml
 C:\Benner\Siscob\Login-asp\WebApplication1\bin\Newtonsoft.Json.xml
 C:\Benner\Siscob\Login-asp\WebApplication1\bin\Antlr3.Runtime.pdb
 C:\Benner\Siscob\Login-asp\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Benner\Siscob\Login-asp\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
 C:\Benner\Siscob\Login-asp\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
 C:\Benner\Siscob\Login-asp\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Benner\Siscob\Login-asp\WebApplication1\obj\Debug\WebApplication1.dll
@@ -246,3 +245,4 @@ C:\GITHUB\siscob\Login-asp\WebApplication1\bin\Newtonsoft.Json.xml
 C:\GITHUB\siscob\Login-asp\WebApplication1\bin\Antlr3.Runtime.pdb
 C:\GITHUB\siscob\Login-asp\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\GITHUB\siscob\Login-asp\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
+C:\Benner\siscob\Login-asp\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache

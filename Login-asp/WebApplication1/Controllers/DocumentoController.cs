@@ -11,7 +11,7 @@ namespace WebApplication1.Controllers
     public class DocumentoController : Controller
     {
         // GET: Default
-        public ActionResult Adicionar(string descricao, int idCliente)
+        public ActionResult Adicionar(string descricao, int idCliente, Contrato contrato)
         {
 
             Documento documento = new Documento();
@@ -21,6 +21,10 @@ namespace WebApplication1.Controllers
 
             doc.Adicionar(documento);
 
+            return View();
+        }
+        public ActionResult Form()
+        {
             return View();
         }
     }

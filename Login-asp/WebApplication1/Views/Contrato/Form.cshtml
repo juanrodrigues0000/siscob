@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Form";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Form</title>
+    <link rel="stylesheet" href="~/Content/style.css">
+
+</head>
+<body>
+
+    <div>
+        @Html.BeginForm("Adicionar", "Contrato", FormMethod.Post) {
+
+        <label for="nomeTitular">Titular do contrato</label>
+        <input id="nomeTitular" name="nomeTitular" type="text" />
+
+        <label for="valorContrato"> Valor total do contrato </label>
+        <input id="valorContrato" name="valorContrato" type="text" />
+
+        <label for="garantia"> Garantias </label>
+        <input id="garantia" name="garantia" type="text" />
+
+        <label for="empresaIdEmpresa"> Id empresa</label>
+        <input id="empresaIdEmpresa" name="empresaIdEmpresa" type="text" />
+
+        <label for="empresa"> Nome da empresa</label>
+        <input id="empresa" name="Empresa" type="text" />
+
+        <label for="funcionario"> Funcionario responsavel</label>
+        <input id="funcionario" name="funcionario" type="text" />
+
+        <label for="pagamentoIdPagamento"> id pagamento </label>
+        <input id="pagamentoIdPagamento" name="pagamentoIdPagamento" type="text" />
+
+
+        <input type="submit" value="Cadastrar" />
+        }
+    </div>
+</body>
+</html>
+
+

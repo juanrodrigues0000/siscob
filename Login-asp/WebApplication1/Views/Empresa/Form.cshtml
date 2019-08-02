@@ -3,64 +3,20 @@
     ViewBag.Title= "Empresa";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Form</title>
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.10/css/all.css'>
-    <link rel="stylesheet" href="~/Content/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-</head>
-<body>
 
-    <div class="leftbox">
-        <nav>
-            <a id="profile" class="active"><i class="fa fa-user"></i></a>
-            <a id="payment"><i class="fa fa-credit-card"></i></a>
-            <a id="subscription"><i class="fa fa-tv"></i></a>
-            <a id="privacy"><i class="fa fa-tasks"></i></a>
-            <a id="settings"><i class="fa fa-cog"></i></a>
-        </nav>
-    </div>
-
-    <div class="rightbox">
-
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2 class="tm-block-title mb-4">Cadastro de Empresa</h2>
-            </div>
+<div class="tm-bg-primary-dark tm-block tm-block-settings">
+    <h2 class="tm-block-title">Cadastrar novo pagamento</h2>
+    <form action="Adicionar" method="post" class="tm-signup-form row">
+        <div class="form-group col-lg-6">
+            <label for="nomeEmpresa">Nome da Empresa</label>
+            <input id="nomeEmpresa" name="nomeEmpresa" type="text" />
         </div>
-        <div>
-  
 
-                @Html.BeginForm("Adicionar", "Empresa", "FormMethod.Post") {
-                <label for="nomeEmpresa">Nome da Empresa</label>
-                <input id="nomeEmpresa" name="nomeEmpresa" type="text" />
-
-                <input type="submit" value="Cadastrar" />
-                }
+        <div class="form-group col-lg-6">
+            <button type="submit" class="btn btn-primary btn-block text-uppercase">
+                Cadastrar
+            </button>
         </div>
-        <div class="payment noshow">
-            <h1>Formulario Pagamentos</h1>
-
-        </div>
-        <div class="subscription noshow">
-            <h1>Formulario Clientes</h1>
-        </div>
-        <div class="privacy noshow">
-            <h1>Formulario Contratos</h1>
-        </div>
-        <div class="settings noshow">
-            <h1>Formulario Funcionarios</h1>
-        </div>
-    </div>
-
-    <!-- partial -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>   
-    <script src="~/Content/script.js"></script>
-
-
-</body>
-</html>
+    </form>
+</div>
