@@ -30,6 +30,15 @@ namespace WebApplication1.Controllers
                 
             return View();
         }
+
+        public ActionResult Listar()
+        {
+            ClienteDAO dao = new ClienteDAO();
+            IList<Cliente> clientes = dao.Listar();
+            ViewBag.ClienteSet = clientes;
+            return View();
+        }
+
         public ActionResult Form()
         {
             return View();

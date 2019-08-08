@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Listar";
+}
+
+<div class="tm-product-table-container">
+    <table class="table table-hover tm-table-small tm-product-table">
+        <thead>
+            <h2 class="tm-block-title">Relação de Pagamentos</h2>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">Valor Total da Parcela</th>
+                <th scope="col">Valor em Aberto</th>
+                <th scope="col">Id do Contrato</th>
+                <th scope="col">id do Cliente</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pagamento in ViewBag.PagamentoSet)
+            {
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <td class="tm-product-name">@pagamento.ValorIntegralDaParcela</td>
+                <td>@pagamento.ValorEmAberto</td>
+                <td>@pagamento.ContratoIdContrato</td>
+                <td>@pagamento.ClienteIdCliente</td>
+                <th scope="col">&nbsp;</th>
+                <td>
+                    <a href="#" class="tm-product-delete-link">
+                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

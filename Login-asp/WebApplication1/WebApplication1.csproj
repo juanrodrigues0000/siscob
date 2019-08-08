@@ -224,6 +224,7 @@
     <Compile Include="Controllers\ContratoController.cs" />
     <Compile Include="Controllers\DocumentoController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PagamentoController.cs" />
@@ -337,6 +338,13 @@
     <Content Include="Views\Cliente\Form.cshtml" />
     <Content Include="Views\Contrato\Form.cshtml" />
     <Content Include="Views\Pagamento\Form.cshtml" />
+    <Content Include="Views\Funcionario\Form.cshtml" />
+    <Content Include="Views\Cliente\Listar.cshtml" />
+    <Content Include="Views\Funcionario\Listar.cshtml" />
+    <Content Include="Views\Contrato\Listar.cshtml" />
+    <Content Include="Views\Empresa\Listar.cshtml" />
+    <Content Include="Views\Documento\Listar.cshtml" />
+    <Content Include="Views\Pagamento\Listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

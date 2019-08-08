@@ -26,6 +26,14 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Listar()
+        {
+            PagamentoDAO dao = new PagamentoDAO();
+            IList<Pagamento> pagamentos = dao.Listar();
+            ViewBag.PagamentoSet = pagamentos;
+            return View();
+        }
+
         public ActionResult Form()
         {
             return View();

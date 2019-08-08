@@ -24,7 +24,7 @@ namespace WebApplication1.DAO
                 contexto.Dispose();
             }
         }
-        public IList<Pagamento> Pagamentos()
+        public IList<Pagamento> Listar()
         {
             using (var contexto = new SiscobContext())
             {

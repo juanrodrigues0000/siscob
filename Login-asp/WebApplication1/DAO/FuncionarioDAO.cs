@@ -25,8 +25,8 @@ namespace WebApplication1.DAO
                     contexto.Dispose();
                 }
             }
-            public IList<Funcionario> Funcionarios()
-            {
+            public IList<Funcionario> Listar()
+        {
                 using (var contexto = new SiscobContext())
                 {
                     return contexto.FuncionarioSet.ToList();

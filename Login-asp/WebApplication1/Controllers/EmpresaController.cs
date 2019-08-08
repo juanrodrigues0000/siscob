@@ -24,6 +24,14 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Listar()
+        {
+            EmpresaDAO dao = new EmpresaDAO();
+            IList<Empresa> empresas = dao.Listar();
+            ViewBag.EmpresaSet = empresas;
+            return View();
+        }
+
         public ActionResult Form()
         {
             return View();

@@ -23,6 +23,15 @@ namespace WebApplication1.Controllers
 
             return View();
         }
+
+        public ActionResult Listar()
+        {
+            DocumentoDAO dao = new DocumentoDAO();
+            IList<Documento> documentos = dao.Listar();
+            ViewBag.DocumentoSet = documentos;
+            return View();
+        }
+
         public ActionResult Form()
         {
             return View();

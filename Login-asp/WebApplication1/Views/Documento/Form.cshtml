@@ -3,29 +3,29 @@
     ViewBag.Title = "Form";
 }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Form</title>
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.10/css/all.css'>
-    <link rel="stylesheet" href="~/Content/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-</head>
-<body>
 
-    <div>
-        @Html.BeginForm("Adicionar", "Documento", FormMethod.Post) {
+<div class="tm-bg-primary-dark tm-block tm-block-settings">
+    <h2 class="tm-block-title">Cadastrar novos documentos</h2>
+    <form action="Adicionar" method="post" class="tm-signup-form row">
+        <div class="form-group col-lg-6">
+            <label for="descricao">Descrição do documento</label>
+            <input id="descricao" name="descricao" type="text" class="form-control validate" />
+        </div>
+        <div class="form-group col-lg-6">
+            <label for="idCliente">Inserir o ID do cliente</label>
+            <input id="idCliente" name="idCliente" type="text" class="form-control validate" />
+        </div>
+        <div class="form-group col-lg-6">
+            <label for="clienteIdCliente">Id do cliente</label>
+            <input id="clienteIdCliente" name="clienteIdCliente" type="text" class="form-control validate">
+        </div>
+        <div class="form-group col-lg-6">
+            <label class="tm-hide-sm">&nbsp;</label>
+            <button type="submit" class="btn btn-primary btn-block text-uppercase">
+                Cadastrar
+            </button>
+        </div>
+    </form>
+</div>
 
-        <label for="descricao">Descrição do documento</label>
-        <input id="descricao" name="descricao" type="text" />
-
-        <label for="idCliente">Inserir o ID do cliente</label>
-        <input id="idCliente" name="idCliente" type="text" />
-
-
-        <input type="submit" value="Cadastrar" />
-        }
-    </div>
-
-</body>
-</html>
+@Html.BeginForm("Adicionar", "Documento", FormMethod.Post) {

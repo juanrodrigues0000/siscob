@@ -25,7 +25,7 @@ namespace WebApplication1.DAO
                 contexto.Dispose();
             }
         }
-        public IList<Documento> Documentos()
+        public IList<Documento> Listar()
         {
             using (var contexto = new SiscobContext())
             {

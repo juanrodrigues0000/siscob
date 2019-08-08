@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Listar";
+}
+
+<div class="tm-product-table-container">
+    <table class="table table-hover tm-table-small tm-product-table">
+        <thead>
+            <h2 class="tm-block-title">Relação de funcionários</h2>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Login</th>
+                <th scope="col">Senha</th>
+                <th scope="col">Função</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var funcionario in ViewBag.FuncionarioSet)
+            {
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <td class="tm-product-name">@funcionario.Nome</td>
+                <td>@funcionario.Login</td>
+                <td>@funcionario.Senha</td>
+                <td>@funcionario.Funcao</td>
+                <th scope="col">&nbsp;</th>
+                <td>
+                    <a href="#" class="tm-product-delete-link">
+                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

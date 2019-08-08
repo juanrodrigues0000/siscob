@@ -27,6 +27,15 @@ namespace WebApplication1.Controllers
 
             return View();
         }
+
+        public ActionResult Listar()
+        {
+            ContratoDAO dao = new ContratoDAO();
+            IList<Contrato> contratos = dao.Listar();
+            ViewBag.ContratoSet = contratos;
+            return View();
+        }
+
         public ActionResult Form()
         {
             return View();

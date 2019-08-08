@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Siscoob - Sistema de Cobrança</title>
+    <title>Siscob - Sistema de Cobrança</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
     <link rel="stylesheet" href="~/Content/tema.css">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
@@ -38,15 +38,20 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="https://technext.github.io/product-admin/login.html#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="https://technext.github.io/product-admin/accounts.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-file-alt"></i>
-                                <span> Documentos <i class="fas fa-angle-down"></i> </span>
+                                <span> Cadastros <i class="fas fa-angle-down"></i> </span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="~/Cliente/Form">Cadastro de Clientes</a>
                                 <a class="dropdown-item" href="~/Contrato/Form">Cadastro de Contratos</a>
                                 <a class="dropdown-item" href="~/Pagamento/Form">Cadastro de Pagamentos</a>
+                                <a class="dropdown-item" href="~/Documento/Form">Cadastro de Documentos</a>
+                                <a class="dropdown-item" href="~/Empresa/Form">Cadastro de Empresas</a>
+                                <a class="dropdown-item" href="~/Funcionario/Form">Cadastro de Funcionários</a>
+
                             </div>
                         </li>
                         <li class="nav-item">
@@ -55,19 +60,22 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://technext.github.io/product-admin/accounts.html">
-                                <i class="far fa-user"></i> Cadastros
+                            <a class="nav-link" href="https://technext.github.io/product-admin/login.html#">
+                                <i class="far fa-user"></i> Documentos
                             </a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="https://technext.github.io/product-admin/login.html#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-cog"></i>
-                                <span> Settings <i class="fas fa-angle-down"></i> </span>
+                                <span> Editar Registros <i class="fas fa-angle-down"></i> </span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="https://technext.github.io/product-admin/login.html#">Profile</a>
-                                <a class="dropdown-item" href="https://technext.github.io/product-admin/login.html#">Billing</a>
-                                <a class="dropdown-item" href="https://technext.github.io/product-admin/login.html#">Customize</a>
+                                <a class="dropdown-item" href="~/Cliente/Listar"> Dados dos clientes</a>
+                                <a class="dropdown-item" href="~/Contrato/Listar"> Dados dos contratos</a>
+                                <a class="dropdown-item" href="~/Pagamento/Listar"> Dados de pagamentos</a>
+                                <a class="dropdown-item" href="~/Documento/Listar"> Dados de Documentos</a>
+                                <a class="dropdown-item" href="~/Empresa/Listar"> Dados de Empresas</a>
+                                <a class="dropdown-item" href="~/Funcionario/Listar"> Dados de Funcionários</a>
                             </div>
                         </li>
                     </ul>

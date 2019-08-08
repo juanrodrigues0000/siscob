@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Listar";
+}
+
+<div class="tm-product-table-container">
+    <table class="table table-hover tm-table-small tm-product-table">
+        <thead>
+            <h2 class="tm-block-title">Relação de Documentos</h2>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">Tipo de documento</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var documento in ViewBag.DocumentoSet)
+            {
+                <tr>
+                    <th scope="col">&nbsp;</th>
+                    <td class="tm-product-name">@documento.Descricao</td>
+                    <td>@documento.IdCliente</td>
+                    <th scope="col">&nbsp;</th>
+                    <td>
+                        <a href="#" class="tm-product-delete-link">
+                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

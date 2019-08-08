@@ -27,7 +27,7 @@ namespace WebApplication1.DAO
                 contexto.Dispose();
             }
         }
-        public IList<Empresa> Empresas()
+        public IList<Empresa> Listar()
         {
             using (var contexto = new SiscobContext())
             {
