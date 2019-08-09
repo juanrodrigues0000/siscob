@@ -28,8 +28,15 @@
                 <th scope="col">&nbsp;</th>
                 <td>
                     <a href="#" class="tm-product-delete-link">
+                        <i class="fas fa-pencil-alt"></i>
+                </td>
+                <td>
+                    <form action="/Funcionario/Remover" method="post">
+                    <input type="hidden" id="idfuncionario" name="idfuncionario" value="@funcionario.IdFuncionario" />
+                    <button type="submit" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </a>
+                    </button></form>
+                    
                 </td>
             </tr>
             }

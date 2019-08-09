@@ -32,6 +32,14 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Excluir(Empresa empresa)
+        {
+            EmpresaDAO dao = new EmpresaDAO();
+
+           dao.Remover(empresa);
+           return View();
+        }
+
         public ActionResult Form()
         {
             return View();

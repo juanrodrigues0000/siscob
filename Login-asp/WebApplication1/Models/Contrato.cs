@@ -6,12 +6,7 @@ namespace siscob
 
     public partial class Contrato
     {
-        public Contrato()
-        {
-            this.Documentos = new HashSet<Documento>();
-            this.Pagamentos = new HashSet<Pagamento>();
-            this.Clientes = new HashSet<Cliente>();
-        }
+        public Contrato() { }
 
         [Key]
         public int IdContrato { get; set; }
@@ -20,8 +15,7 @@ namespace siscob
         public string Garantia { get; set; }
         public int EmpresaIdEmpresa { get; set; }
 
-        public virtual ICollection<Documento> Documentos { get; set; }
-        public virtual ICollection<Pagamento> Pagamentos { get; set; }
-        public virtual ICollection<Cliente> Clientes { get; set; }
+
     }
 }
+

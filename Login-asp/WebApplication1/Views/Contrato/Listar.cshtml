@@ -19,19 +19,23 @@
         <tbody>
             @foreach (var contrato in ViewBag.ContratoSet)
             {
-                <tr>
-                    <th scope="col">&nbsp;</th>
-                    <td class="tm-product-name">@contrato.NomeTitular</td>
-                    <td>@contrato.ValorContrato</td>
-                    <td>@contrato.Garantia</td>
-                    <td>@contrato.EmpresaIdEmpresa</td>
-                    <th scope="col">&nbsp;</th>
-                    <td>
-                        <a href="#" class="tm-product-delete-link">
-                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                    </td>
-                </tr>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <td class="tm-product-name">@contrato.NomeTitular</td>
+                <td>@contrato.ValorContrato</td>
+                <td>@contrato.Garantia</td>
+                <td>@contrato.EmpresaIdEmpresa</td>
+                <th scope="col">&nbsp;</th>
+                <td>
+                    <a href="#" class="tm-product-delete-link">
+                        <i class="fas fa-pencil-alt"></i>
+                </td>
+                <td>
+                    <a href="#" class="tm-product-delete-link">
+                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                    </a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

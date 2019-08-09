@@ -18,6 +18,5 @@ namespace siscob
         public string Senha { get; set; }
         public string Funcao { get; set; }
     
-       // public virtual ICollection<Contrato> Contrato1 { get; set; }
     }
 }

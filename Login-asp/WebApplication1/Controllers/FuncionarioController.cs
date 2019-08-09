@@ -32,6 +32,15 @@ namespace WebApplication1.Controllers
             ViewBag.FuncionarioSet = funcionarios;
             return View();
         }
+        //[Route("Funcionario/Remover/{idfuncionario:int}")]
+        public ActionResult Remover(int idfuncionario)
+        {
+            
+            FuncionarioDAO dao = new FuncionarioDAO();
+            var funcionario = dao.Listar().FirstOrDefault(x => x.IdFuncionario == idfuncionario);
+            dao.Remover(funcionario);
+            return View();
+        }
 
         public ActionResult Form()
         {

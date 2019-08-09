@@ -17,17 +17,21 @@
         <tbody>
             @foreach (var documento in ViewBag.DocumentoSet)
             {
-                <tr>
-                    <th scope="col">&nbsp;</th>
-                    <td class="tm-product-name">@documento.Descricao</td>
-                    <td>@documento.IdCliente</td>
-                    <th scope="col">&nbsp;</th>
-                    <td>
-                        <a href="#" class="tm-product-delete-link">
-                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                    </td>
-                </tr>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <td class="tm-product-name">@documento.Descricao</td>
+                <td>@documento.IdCliente</td>
+                <th scope="col">&nbsp;</th>
+                <td>
+                    <a href="#" class="tm-product-delete-link">
+                        <i class="fas fa-pencil-alt"></i>
+                </td>
+                <td>
+                    <a href="#" class="tm-product-delete-link">
+                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                    </a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

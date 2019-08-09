@@ -18,6 +18,8 @@ namespace WebApplication1.Controllers
             DocumentoDAO doc = new DocumentoDAO();
             documento.Descricao = descricao;
             documento.IdCliente = idCliente;
+            //id Contrato
+            // byte []
 
             doc.Adicionar(documento);
 

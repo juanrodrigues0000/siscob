@@ -40,6 +40,7 @@ namespace WebApplication1.DAO
                     contexto.SaveChanges();
                 }
             }
+      
 
             public Funcionario Busca(string login, string senha) // método para verificar a senha do funcionário que tenta logar
             {
@@ -48,5 +49,7 @@ namespace WebApplication1.DAO
                     return contexto.FuncionarioSet.FirstOrDefault(u => u.Login == login && u.Senha == senha);
                 }
             }
+
+        
        }
 }

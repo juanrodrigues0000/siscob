@@ -39,6 +39,14 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Remover(Cliente cliente)
+        {
+
+            ClienteDAO dao = new ClienteDAO();
+            dao.Remover(cliente);
+            return View();
+        }
+
         public ActionResult Form()
         {
             return View();
