@@ -27,9 +27,12 @@
                         <i class="fas fa-pencil-alt"></i>
                 </td>
                 <td>
-                    <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </a>
+                    <form action="/Documento/Remover" method="post">
+                        <input type="hidden" id="iddocumento" name="iddocumento" value="@documento.IdDocumento" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             }

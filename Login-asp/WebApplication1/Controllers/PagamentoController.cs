@@ -34,6 +34,15 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Remover(int idpagamento)
+        {
+
+            PagamentoDAO dao = new PagamentoDAO();
+            var pagamento = dao.Listar().FirstOrDefault(x => x.IdPagamento == idpagamento);
+            dao.Remover(pagamento);
+            return View();
+        }
+
         public ActionResult Form()
         {
             return View();

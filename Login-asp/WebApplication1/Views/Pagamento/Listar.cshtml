@@ -28,12 +28,15 @@
                 <th scope="col">&nbsp;</th>
                 <td>
                     <a href="#" class="tm-product-delete-link">
-                     <i class="fas fa-pencil-alt"></i>
+                        <i class="fas fa-pencil-alt"></i>
                 </td>
                 <td>
-                    <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </a>
+                    <form action="/Pagamento/Remover" method="post">
+                        <input type="hidden" id="idpagamento" name="idpagamento" value="@pagamento.IdPagamento" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             }

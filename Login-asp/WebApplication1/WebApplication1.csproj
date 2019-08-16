@@ -345,6 +345,8 @@
     <Content Include="Views\Empresa\Listar.cshtml" />
     <Content Include="Views\Documento\Listar.cshtml" />
     <Content Include="Views\Pagamento\Listar.cshtml" />
+    <Content Include="Views\Empresa\Alterar.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

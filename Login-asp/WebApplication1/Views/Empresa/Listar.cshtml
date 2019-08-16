@@ -21,13 +21,20 @@
                 <td class="tm-product-name">@empresa.NomeEmpresa</td>
                 <th scope="col">&nbsp;</th>
                 <td>
-                    <a href="#" class="tm-product-delete-link">
-                        <i class="fas fa-pencil-alt"></i>
+                    <form action="/Empresa/Alterar" method="post">
+                        <input type="hidden" id="idempresa" name="idempresa" value="@empresa.IdEmpresa" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </form>
                 </td>
                 <td>
-                    <a href="/Empresa/Excluir" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </a>
+                    <form action="/Empresa/Remover" method="post">
+                        <input type="hidden" id="idempresa" name="idempresa" value="@empresa.IdEmpresa" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             }

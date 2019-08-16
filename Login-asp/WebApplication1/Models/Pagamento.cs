@@ -15,5 +15,18 @@ namespace siscob
     
         public virtual Contrato Contrato { get; set; }
         public virtual Cliente Cliente { get; set; }
+
+
+
+        public double CalculoContrato(double valorContrato, int quantidadeParcelas)
+        {
+            valorContrato *= 1.05;
+            valorContrato = valorContrato / quantidadeParcelas;
+
+            return valorContrato;
+
+        }
+
     }
+
 }

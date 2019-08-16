@@ -8,20 +8,20 @@
     <form action="Adicionar" method="post" class="tm-signup-form row">
         <div class="form-group col-lg-6">
             <label for="nomeTitular">Titular do contrato</label>
-            <input id="nomeTitular" name="nomeTitular" type="text" class="form-control validate"/>
+            <input id="nomeTitular" name="nomeTitular" type="text" class="form-control validate" />
         </div>
         <div class="form-group col-lg-6">
 
             <label for="valorContrato"> Valor total do contrato </label>
-            <input id="valorContrato" name="valorContrato" type="text" class="form-control validate"/>
+            <input id="valorContrato" name="valorContrato" type="text" class="form-control validate" />
         </div>
         <div class="form-group col-lg-6">
             <label for="garantia"> Garantias </label>
-            <input id="garantia" name="garantia" type="text" class="form-control validate"/>
+            <input id="garantia" name="garantia" type="text" class="form-control validate" />
         </div>
         <div class="form-group col-lg-6">
             <label for="empresaIdEmpresa"> Id empresa</label>
-            <input id="empresaIdEmpresa" name="empresaIdEmpresa" type="text" class="form-control validate"/>
+            <input id="empresaIdEmpresa" name="empresaIdEmpresa" type="text" class="form-control validate" />
         </div>
         <div class="form-group col-lg-6">
             <label for="empresa"> Nome da empresa</label>
@@ -29,7 +29,17 @@
         </div>
         <div class="form-group col-lg-6">
             <label for="funcionario"> Funcionario responsavel</label>
-            <input id="funcionario" name="funcionario" type="text" class="form-control validate"/>
+            <input id="funcionario" name="funcionario" type="text" class="form-control validate" />
+        </div>
+        <div class="form-group col-lg-6">
+            <label for="quantidadeParcelas"> Quantidade de Parcelas do Contrato</label>
+            <input id="quantidadeParcelas" name="quantidadeParcelas" type="text" class="form-control validate" />
+        </div>
+
+
+        <div class="form-group col-lg-6">
+            <label for="idCliente"> O ID do cliente</label>
+            <input id="idCliente" name="idCliente" type="text" class="form-control validate" />
         </div>
 
         <div class="form-group col-lg-6">
@@ -42,4 +52,3 @@
 </div>
 
 
-@Html.BeginForm("Adicionar", "Contrato", FormMethod.Post) {

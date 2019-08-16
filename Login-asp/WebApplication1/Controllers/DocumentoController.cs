@@ -34,6 +34,17 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Remover(int iddocumento)
+        {
+
+            DocumentoDAO dao = new DocumentoDAO();
+            var documento = dao.Listar().FirstOrDefault(x => x.IdDocumento == iddocumento);
+            dao.Remover(documento);
+            return View();
+        }
+
+
+
         public ActionResult Form()
         {
             return View();

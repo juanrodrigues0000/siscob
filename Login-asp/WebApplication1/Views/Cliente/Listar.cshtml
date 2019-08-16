@@ -27,7 +27,7 @@
                 <td class="tm-product-name">@cliente.NomeCompleto</td>
                 <td>@cliente.CPF</td>
                 <td>@cliente.CNPJ</td>
-                <td>@cliente.Endereço</td>
+                <td>@cliente.Endereco</td>
                 <td>@cliente.SituacaoJuridica</td>
                 <td>@cliente.Categoria</td>
                 <td>@cliente.Associados</td>
@@ -37,9 +37,11 @@
                         <i class="fas fa-pencil-alt"></i>
                 </td>
                 <td>
-                    <a href="#" class="tm-product-delete-link">
+                    <form action="/Cliente/Remover" method="post">
+                    <input type="hidden" id="idcliente" name="idcliente" value="@cliente.IdCliente" />
+                    <button type="submit" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </a>
+                    </button></form>
                 </td>
             </tr>
             }
