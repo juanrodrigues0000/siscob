@@ -1,8 +1,10 @@
-﻿using siscob;
+﻿using Microsoft.EntityFrameworkCore;
+using siscob;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using WebApplication1.Context;
 
 namespace WebApplication1.DAO
@@ -39,5 +41,24 @@ namespace WebApplication1.DAO
                 contexto.SaveChanges();
             }
         }
+
+        [HttpPost]
+        public void Alterar(Cliente cliente)
+        {
+
+            using (var contexto = new SiscobContext())
+            {
+                contexto.ClienteSet.Attach(cliente);
+                contexto.SaveChanges();
+
+                contexto.Entry(cliente).State = EntityState.Modified;
+                contexto.SaveChanges();
+
+                // contexto.ClienteSet.Attach(empresa);
+                // contexto.SaveChanges();
+            }
+        }
+
+
     }
 }

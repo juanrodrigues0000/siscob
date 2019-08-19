@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using WebApplication1.DAO;
 using siscob;
 using WebApplication1.Context;
-
+using WebApplication1.Filtros;
 
 namespace WebApplication1.Controllers
 {
+    // [AutorizacaoFilter]
     public class EmpresaController : Controller
     {
         // GET: Default
@@ -42,20 +43,29 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult Alterar(int idempresa)
+        public ActionResult Alterar(int IdEmpresa, string NomeEmpresa)
+        {
+            EmpresaDAO dao = new EmpresaDAO();
+            var empresa = dao.Listar().FirstOrDefault(x => x.IdEmpresa == IdEmpresa);
+            return View(empresa);
+        }
+
+        [HttpPost]
+        public ActionResult AlterarEmpresa(int IdEmpresa, string NomeEmpresa)
         {
 
-                EmpresaDAO dao = new EmpresaDAO();
-                var empresa = dao.Listar().FirstOrDefault(x => x.IdEmpresa == idempresa);
-                dao.Alterar(empresa);
-                return View(empresa);
+            EmpresaDAO dao = new EmpresaDAO();
+            var empresa = dao.Listar().FirstOrDefault(x => x.IdEmpresa == IdEmpresa);
+            empresa.NomeEmpresa = NomeEmpresa;
+            dao.Alterar(empresa);
+            return View(empresa);
 
 
 
             //]var empresa = dao.Listar().FirstOrDefault(x => x.IdEmpresa == idempresa);
 
 
-           // var std = studentList.Where(s => s.StudentId == Id).FirstOrDefault();
+            // var std = studentList.Where(s => s.StudentId == Id).FirstOrDefault();
 
         }
 

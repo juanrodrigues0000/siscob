@@ -48,6 +48,24 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Alterar(int idcliente)
+        {
+
+            ClienteDAO dao = new ClienteDAO();
+            var cliente = dao.Listar().FirstOrDefault(x => x.IdCliente == idcliente);
+            dao.Alterar(cliente);
+            return View(cliente);
+
+
+
+            //var empresa = dao.Listar().FirstOrDefault(x => x.IdEmpresa == idempresa);
+
+
+            // var std = studentList.Where(s => s.StudentId == Id).FirstOrDefault();
+
+        }
+
 
         public ActionResult Form()
         {

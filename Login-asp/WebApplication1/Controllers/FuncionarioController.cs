@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.DAO;
+using WebApplication1.Filtros;
 
 namespace WebApplication1.Controllers
 {
+    [AutorizacaoFilter]
     public class FuncionarioController : Controller
     {
         // GET: Funcionario

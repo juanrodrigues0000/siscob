@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
             if (funcionario != null)
             {
                 Session["funcionarioLogado"] = funcionario;
-                return RedirectToAction("index","Form");
+                return RedirectToAction("index", "Form");
             }
             else
             {
@@ -31,3 +31,5 @@ namespace WebApplication1.Controllers
         }
     }
 }
+
+//return RedirectToAction("index","Form");

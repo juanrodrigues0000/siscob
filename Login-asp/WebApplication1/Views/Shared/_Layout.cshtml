@@ -19,6 +19,12 @@
     Product Admin CSS Template
     https://templatemo.com/tm-524-product-admin
     -->
+
+    <link rel="stylesheet" href="~/Content/files/bootstrap.bundle.min" />
+    <link rel="stylesheet" href="~/Content/files/bootstrap.min" />
+    <link rel="stylesheet" href="~/Content/files/font-awesome.min" />
+    <link rel="stylesheet" href="~/Content/files/jquery-3.3.1.slim.min" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css" />
 </head>
 <body>
     <div>
@@ -97,7 +103,12 @@
     <script src="~/Content/Scripts/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
     <script src="~/Content/Scripts/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+    <!-- https://getbootstrap.com/ -->
+    <script>
+        $(document).ready(function () {
+            $('.tabela-datatables').DataTable();
+        });</script>
 </body>
 </html>

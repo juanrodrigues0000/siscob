@@ -33,10 +33,11 @@ namespace WebApplication1.Controllers
 
             double valorParcela;
 
-            Pagamento pagamento = new Pagamento();
+            
 
             for (var i = 0; i < quantidadeParcelas; i++)
             {
+                Pagamento pagamento = new Pagamento();
 
                 valorParcela = pagamento.CalculoContrato(valorContrato, quantidadeParcelas);
 

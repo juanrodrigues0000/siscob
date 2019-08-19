@@ -41,9 +41,10 @@ namespace WebApplication1.DAO
 
             using (var contexto = new SiscobContext())
             {
+                /*
                 contexto.EmpresaSet.Attach(empresa);
                 contexto.SaveChanges();
-
+                */
                 contexto.Entry(empresa).State = EntityState.Modified;
                 contexto.SaveChanges();
 
