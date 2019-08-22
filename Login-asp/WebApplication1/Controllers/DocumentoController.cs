@@ -43,6 +43,29 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Alterar(int iddocumento)
+        {
+            DocumentoDAO dao = new DocumentoDAO();
+            var documento = dao.Listar().FirstOrDefault(x => x.IdDocumento == iddocumento);
+            return View(documento);
+        }
+
+        [HttpPost]
+        public ActionResult AlterarEmpresa(int iddocumento, string descricao, int idCliente, Contrato contrato)
+        {
+
+            DocumentoDAO dao = new DocumentoDAO();
+            var documento = dao.Listar().FirstOrDefault(x => x.IdDocumento == iddocumento);
+            documento.Descricao = descricao;
+            documento.IdCliente = idCliente;
+            //id Contrato
+            // byte []
+
+            dao.Alterar(documento);
+            return View(documento);
+        }
+
 
 
         public ActionResult Form()

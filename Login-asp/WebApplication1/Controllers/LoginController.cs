@@ -15,14 +15,14 @@ namespace WebApplication1.Controllers
             return View();
         }
         
-        public ActionResult Autentica(string login, string senha )
+        public ActionResult Autentica(string login, string senha)
         {
             FuncionarioDAO dao = new FuncionarioDAO();
             Funcionario funcionario = dao.Busca(login, senha);
             if (funcionario != null)
             {
                 Session["funcionarioLogado"] = funcionario;
-                return RedirectToAction("index", "Form");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

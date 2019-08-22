@@ -30,7 +30,7 @@
     <div>
         <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
-                <a class="navbar-brand" href="/Shared/_Layout">
+                <a class="navbar-brand" href="https://technext.github.io/product-admin/products.html">
                     <h1 class="tm-site-title mb-0">SISCOB</h1>
                 </a>
                 <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,14 +39,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
                         <li class="nav-item">
-                            <a class="nav-link" href="https://technext.github.io/product-admin/index.html">
+                            <a class="nav-link" href="~/Home/Index">
                                 <i class="fas fa-tachometer-alt"></i> Dashboard
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="https://technext.github.io/product-admin/accounts.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="~/Home/Index" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-file-alt"></i>
                                 <span> Cadastros <i class="fas fa-angle-down"></i> </span>
                             </a>
@@ -80,8 +80,8 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Login/Index.cshtml">
-                                <i class="far fa-user"></i> Documentos
+                            <a class="nav-link" href="~/Login/Index">
+                                <i class="far fa-user"></i> Acesso
                             </a>
                         </li>
                     </ul>
@@ -92,14 +92,20 @@
     <div class="container tm-mt-big tm-mb-big">
         @RenderBody()
     </div>
+
+
+
+
     <footer class="tm-footer row tm-mt-small">
         <div class="col-12 font-weight-light">
             <p class="text-center text-white mb-0 px-4 small">
                 Siscob: Soluções de cobrança
 
+                Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
             </p>
         </div>
     </footer>
+
     <script src="~/Content/Scripts/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
     <script src="~/Content/Scripts/bootstrap.min.js"></script>

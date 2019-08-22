@@ -60,14 +60,8 @@ namespace WebApplication1.Controllers
             dao.Alterar(empresa);
             return View(empresa);
 
-
-
-            //]var empresa = dao.Listar().FirstOrDefault(x => x.IdEmpresa == idempresa);
-
-
-            // var std = studentList.Where(s => s.StudentId == Id).FirstOrDefault();
-
         }
+
 
 
         public ActionResult Form()

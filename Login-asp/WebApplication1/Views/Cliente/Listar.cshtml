@@ -33,15 +33,20 @@
                 <td>@cliente.Associados</td>
                 <th scope="col">&nbsp;</th>
                 <td>
-                    <a href="#" class="tm-product-delete-link">
-                        <i class="fas fa-pencil-alt"></i>
+                    <form action="/Cliente/Alterar" method="post">
+                        <input type="hidden" id="idcliente" name="idcliente" value="@cliente.IdCliente" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </form>
                 </td>
                 <td>
                     <form action="/Cliente/Remover" method="post">
-                    <input type="hidden" id="idcliente" name="idcliente" value="@cliente.IdCliente" />
-                    <button type="submit" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </button></form>
+                        <input type="hidden" id="idcliente" name="idcliente" value="@cliente.IdCliente" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             }

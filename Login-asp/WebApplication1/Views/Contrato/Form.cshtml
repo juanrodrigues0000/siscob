@@ -34,7 +34,17 @@
         <div class="form-group col-lg-6">
             <label for="quantidadeParcelas"> Quantidade de Parcelas do Contrato</label>
             <input id="quantidadeParcelas" name="quantidadeParcelas" type="text" class="form-control validate" />
+
         </div>
+
+
+        <div class="form-group col-lg-6">
+            <label class="tm-hide-sm">&nbsp;</label>
+            <button onclick="Montante(valorContrato, QuantidadeParcelas)" class="btn btn-primary btn-block text-uppercase">
+                Projeção do valor
+            </button>
+        </div>
+
 
 
         <div class="form-group col-lg-6">
@@ -48,7 +58,28 @@
                 Cadastrar
             </button>
         </div>
+
+
     </form>
 </div>
 
 
+
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+
+
+
+  function Montante(total, parcelas){
+    var url = "@Url.Action("CalculoMontante", "Contrato")";
+      $.get(url, { valorContrato: total, quantidadeParcelas: parcelas }, atualiza );
+  }
+
+    function atualiza(resposta) {
+    console.log(resposta);
+    var elemento = $("#quantidade" + resposta.Id);
+      elemento.html(resposta.Quantidade);
+      
+    }
+
+</script>

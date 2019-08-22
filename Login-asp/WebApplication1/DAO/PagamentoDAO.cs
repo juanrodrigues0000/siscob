@@ -1,4 +1,5 @@
-﻿using siscob;
+﻿using Microsoft.EntityFrameworkCore;
+using siscob;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,18 @@ namespace WebApplication1.DAO
             {
                 contexto.PagamentoSet.Remove(pagamento);
                 contexto.SaveChanges();
+            }
+        }
+
+        public void Alterar(Pagamento pagamento)
+        {
+            using (var contexto = new SiscobContext())
+            {
+                contexto.Entry(pagamento).State = EntityState.Modified;
+                contexto.SaveChanges();
+
+                //contexto.PagamentoSet.Attach(pagamento);
+                //contexto.SaveChanges();
             }
         }
 

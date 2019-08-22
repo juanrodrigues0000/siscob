@@ -5,6 +5,7 @@ using System.Web;
 using siscob;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Context;
+using System.Web.Mvc;
 
 namespace WebApplication1.DAO
 {
@@ -40,9 +41,26 @@ namespace WebApplication1.DAO
                     contexto.SaveChanges();
                 }
             }
-      
 
-            public Funcionario Busca(string login, string senha) // método para verificar a senha do funcionário que tenta logar
+
+
+        [HttpPost]
+        public void Alterar(Funcionario funcionario)
+        {
+
+            using (var contexto = new SiscobContext())
+            {
+
+                contexto.Entry(funcionario).State = EntityState.Modified;
+                contexto.SaveChanges();
+
+                // contexto.ClienteSet.Attach(empresa);
+                // contexto.SaveChanges();
+            }
+        }
+
+
+        public Funcionario Busca(string login, string senha) // método para verificar a senha do funcionário que tenta logar
             {
                 using (var contexto = new SiscobContext())
                 {

@@ -23,17 +23,12 @@ namespace WebApplication1.Controllers
             contrato.EmpresaIdEmpresa = empresaIdEmpresa;
             //contrato.Empresa = nomeEmpresa;
 
-
             dao.Adicionar(contrato);
-
-
-           
             
             //int auxiliar;
 
             double valorParcela;
 
-            
 
             for (var i = 0; i < quantidadeParcelas; i++)
             {
@@ -43,10 +38,6 @@ namespace WebApplication1.Controllers
 
 
                 // INSERINDO NA TABELA PAGAMENTOS
-
-                if (i >= 1) { }
-
-
 
                 PagamentoDAO daoPagamento = new PagamentoDAO();
                 pagamento.ValorIntegralDaParcela = valorParcela;
@@ -63,6 +54,19 @@ namespace WebApplication1.Controllers
             }
 
             return View();
+
+        }
+
+        [HttpGet]
+        public string CalculoMontante(double valorContrato, int quantidadeParcelas)
+        {
+            double resposta;
+
+            Pagamento pagamento = new Pagamento();
+
+            resposta = pagamento.CalculoContrato(valorContrato, quantidadeParcelas);
+
+            return resposta.ToString();
 
         }
 
@@ -84,6 +88,30 @@ namespace WebApplication1.Controllers
         }
 
 
+        public ActionResult Alterar(int idContrato)
+        {
+            ContratoDAO dao = new ContratoDAO();
+            var contrato = dao.Listar().FirstOrDefault(x => x.IdContrato == idContrato);
+            return View(contrato);
+        }
+
+        [HttpPost]
+        public ActionResult AlteraContrato(int idContrato, string nomeTitular, double ValorContrato, string garantia, int empresaIdEmpresa, int quantidadeParcelas, int idCliente)
+        {
+
+            ContratoDAO dao = new ContratoDAO();
+            var contrato = dao.Listar().FirstOrDefault(x => x.IdContrato == idContrato);
+            contrato.NomeTitular = nomeTitular;
+            contrato.ValorContrato = ValorContrato;
+            contrato.Garantia = garantia;
+            contrato.EmpresaIdEmpresa = empresaIdEmpresa;
+            //contrato.Empresa = nomeEmpresa;
+
+            dao.Alterar(contrato);
+
+            return View(contrato);
+
+        }
         public ActionResult Form()
         {
             return View();

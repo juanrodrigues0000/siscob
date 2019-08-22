@@ -27,16 +27,21 @@
                 <td>@funcionario.Funcao</td>
                 <th scope="col">&nbsp;</th>
                 <td>
-                    <a href="#" class="tm-product-delete-link">
-                        <i class="fas fa-pencil-alt"></i>
+                    <form action="/Funcionario/Alterar" method="post">
+                        <input type="hidden" id="idfuncionario" name="idfuncionario" value="@funcionario.IdFuncionario" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </form>
                 </td>
                 <td>
                     <form action="/Funcionario/Remover" method="post">
-                    <input type="hidden" id="idfuncionario" name="idfuncionario" value="@funcionario.IdFuncionario" />
-                    <button type="submit" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </button></form>
-                    
+                        <input type="hidden" id="idfuncionario" name="idfuncionario" value="@funcionario.IdFuncionario" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                        </button>
+                    </form>
+
                 </td>
             </tr>
             }

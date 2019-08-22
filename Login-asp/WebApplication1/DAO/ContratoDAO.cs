@@ -1,4 +1,5 @@
-﻿using siscob;
+﻿using Microsoft.EntityFrameworkCore;
+using siscob;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,16 @@ namespace WebApplication1.DAO
                 return contexto.ContratoSet.ToList();
             }
         }
+
+        public void Alterar(Contrato contrato)
+        {
+            using(var contexto = new SiscobContext())
+            {
+                contexto.Entry(contrato).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
+        }
+
         public void Remover(Contrato contrato)
         {
             using (var contexto = new SiscobContext())

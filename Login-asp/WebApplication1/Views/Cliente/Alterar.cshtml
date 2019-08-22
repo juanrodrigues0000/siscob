@@ -1,0 +1,102 @@
+﻿@model siscob.Cliente
+
+
+@{
+    ViewBag.Title = "Alterar";
+}
+
+@using (Html.BeginForm("AlterarCliente", "Cliente"))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h2 class="tm-block-title">Alterar Dados do Cliente</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(cliente => cliente.IdCliente)
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(cliente => cliente.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(cliente => cliente.IdCliente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(cliente => cliente.IdCliente, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(cliente => cliente.NomeCompleto, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(cliente => cliente.NomeCompleto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(cliente => cliente.NomeCompleto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(cliente => cliente.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(cliente => cliente.CPF, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(cliente => cliente.CPF, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(cliente => cliente.CNPJ, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(cliente => cliente.CNPJ, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(cliente => cliente.CNPJ, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(cliente => cliente.Endereco, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(cliente => cliente.Endereco, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(cliente => cliente.Endereco, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(cliente => cliente.SituacaoJuridica, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(cliente => cliente.SituacaoJuridica, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(cliente => cliente.SituacaoJuridica, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(cliente => cliente.Categoria, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(cliente => cliente.Categoria, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(cliente => cliente.Categoria, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(cliente => cliente.Associados, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(cliente => cliente.Associados, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(cliente => cliente.Associados, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(cliente => cliente.ClienteIdCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(cliente => cliente.ClienteIdCliente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(cliente => cliente.ClienteIdCliente, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group col-lg-6">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar alteração" class="btn btn-primary btn-block text-uppercase" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

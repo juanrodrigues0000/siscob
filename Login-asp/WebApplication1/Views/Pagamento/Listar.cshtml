@@ -27,8 +27,12 @@
                 <td>@pagamento.ClienteIdCliente</td>
                 <th scope="col">&nbsp;</th>
                 <td>
-                    <a href="#" class="tm-product-delete-link">
-                        <i class="fas fa-pencil-alt"></i>
+                    <form action="/Pagamento/Alterar" method="post">
+                        <input type="hidden" id="idpagamento" name="idpagamento" value="@pagamento.IdPagamento"/>
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </form>
                 </td>
                 <td>
                     <form action="/Pagamento/Remover" method="post">

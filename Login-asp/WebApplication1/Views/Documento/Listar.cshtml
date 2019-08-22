@@ -23,8 +23,12 @@
                 <td>@documento.IdCliente</td>
                 <th scope="col">&nbsp;</th>
                 <td>
-                    <a href="#" class="tm-product-delete-link">
-                        <i class="fas fa-pencil-alt"></i>
+                    <form action="/Documento/Alterar" method="post">
+                        <input type="hidden" id="iddocumento" name="iddocumento" value="@documento.IdDocumento" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </form>
                 </td>
                 <td>
                     <form action="/Documento/Remover" method="post">

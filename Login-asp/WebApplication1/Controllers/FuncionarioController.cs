@@ -44,6 +44,32 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        public ActionResult Alterar(int IdFuncionario, string nome, string login, string senha, string funcao)
+        {
+            FuncionarioDAO dao = new FuncionarioDAO();
+            var funcionario = dao.Listar().FirstOrDefault(x => x.IdFuncionario == IdFuncionario);
+            return View(funcionario);
+        }
+
+        [HttpPost]
+        public ActionResult AlterarFuncionario(int IdFuncionario, string nome, string login, string senha, string funcao)
+        {
+
+            FuncionarioDAO dao = new FuncionarioDAO();
+            var funcionario = dao.Listar().FirstOrDefault(x => x.IdFuncionario == IdFuncionario);
+            funcionario.Nome = nome;
+            funcionario.Login = login;
+            funcionario.Senha = senha;
+            funcionario.Funcao = funcao;
+
+            dao.Alterar(funcionario);
+
+            return View(funcionario);
+
+        }
+
         public ActionResult Form()
         {
             return View();

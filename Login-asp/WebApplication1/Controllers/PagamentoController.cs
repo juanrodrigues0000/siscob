@@ -43,6 +43,33 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+
+        [HttpPost]
+        public ActionResult Alterar(int idpagamento)
+        {
+            PagamentoDAO dao = new PagamentoDAO();
+            var pagamento = dao.Listar().FirstOrDefault(x => x.IdPagamento == idpagamento);
+            return View(pagamento);
+        }
+
+        [HttpPost]
+        public ActionResult AlterarPagamento(int idpagamento, double valorIntegralDaParcela, double valorEmAberto, int contratoIdContrato,
+                                        int clienteIdCliente)
+        {
+
+            PagamentoDAO dao = new PagamentoDAO();
+            var pagamento = dao.Listar().FirstOrDefault(x => x.IdPagamento == idpagamento);
+            pagamento.ValorIntegralDaParcela = valorIntegralDaParcela;
+            pagamento.ValorEmAberto = valorEmAberto;
+            pagamento.ContratoIdContrato = contratoIdContrato;
+            pagamento.ClienteIdCliente = clienteIdCliente;
+
+            dao.Adicionar(pagamento);
+
+            return View(pagamento);
+
+        }
+
         public ActionResult Form()
         {
             return View();

@@ -49,22 +49,40 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult Alterar(int idcliente)
+        public ActionResult Alterar(int idCliente)
         {
 
             ClienteDAO dao = new ClienteDAO();
-            var cliente = dao.Listar().FirstOrDefault(x => x.IdCliente == idcliente);
+            var cliente = dao.Listar().FirstOrDefault(x => x.IdCliente == idCliente);
             dao.Alterar(cliente);
+            return View(cliente);
+        }
+
+        [HttpPost]
+        public ActionResult AlterarCliente(int idCliente, string nomeCompleto, string cpf, string cnpj,
+                                                    string endereco, int situacaoJuridica, int categoria, int associados, int clienteIdCliente)
+        {
+
+            ClienteDAO dao = new ClienteDAO();
+            var cliente = dao.Listar().FirstOrDefault(x => x.IdCliente == idCliente);
+            cliente.NomeCompleto = nomeCompleto;
+            cliente.CPF = cpf;
+            cliente.CNPJ = cnpj;
+            cliente.Endereco = endereco;
+            cliente.SituacaoJuridica = situacaoJuridica;
+            cliente.Categoria = categoria;
+            cliente.Associados = associados;
+            cliente.ClienteIdCliente = clienteIdCliente;
+
+            dao.Alterar(cliente);
+
             return View(cliente);
 
 
-
-            //var empresa = dao.Listar().FirstOrDefault(x => x.IdEmpresa == idempresa);
-
-
-            // var std = studentList.Where(s => s.StudentId == Id).FirstOrDefault();
-
         }
+
+
+
 
 
         public ActionResult Form()

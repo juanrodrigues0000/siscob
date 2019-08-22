@@ -1,0 +1,52 @@
+﻿@model siscob.Documento
+
+@{
+    ViewBag.Title = "Alterar";
+}
+
+@using (Html.BeginForm("AlterarDocumento", "Documento"))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h2 class="tm-block-title">Alterar Dados do Documento</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(documento => documento.IdDocumento)
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(documento => documento.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(documento => documento.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(documento => documento.Descricao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(documento => documento.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(documento => documento.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(documento => documento.Descricao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(documento => documento.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(documento => documento.IdCliente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(documento => documento.IdCliente, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group col-lg-6">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar alteração" class="btn btn-primary btn-block text-uppercase" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
