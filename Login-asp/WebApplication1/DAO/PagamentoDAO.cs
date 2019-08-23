@@ -53,5 +53,17 @@ namespace WebApplication1.DAO
             }
         }
 
+        public Pagamento BuscarProximoPagamento(Pagamento pagamentoAtual)
+        {
+            using (var contexto = new SiscobContext())
+            {
+                var resultado = contexto.PagamentoSet
+                    .Where(x => x.DataVencimento > pagamentoAtual.DataVencimento && x.ContratoIdContrato == pagamentoAtual.ContratoIdContrato)
+                    .OrderBy(x => x.DataVencimento)
+                    .FirstOrDefault();
+                return resultado;
+            }
+        }
+
     }
 }

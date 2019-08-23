@@ -9,10 +9,10 @@ namespace siscob
         [Key]
         public int IdPagamento { get; set; }
         public double ValorIntegralDaParcela { get; set; }
-        public double ValorEmAberto { get; set; }
+        public int Status { get; set; }
+        public DateTime DataVencimento { get; set; }
         public int ContratoIdContrato { get; set; }
         public int ClienteIdCliente { get; set; }
-    
         public virtual Contrato Contrato { get; set; }
         public virtual Cliente Cliente { get; set; }
 

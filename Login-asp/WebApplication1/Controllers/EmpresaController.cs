@@ -15,12 +15,14 @@ namespace WebApplication1.Controllers
     {
         // GET: Default
         
-        public ActionResult Adicionar(string nomeEmpresa)
+        public ActionResult Adicionar(string nomeEmpresa, int teleFoneEmpresa, string enderecoEmpresa)
         {
             
             Empresa empresa = new Empresa();
             EmpresaDAO adicionar = new EmpresaDAO();
             empresa.NomeEmpresa = nomeEmpresa;
+            empresa.TelefoneEmpresa = teleFoneEmpresa;
+            empresa.EnderecoEmpresa = enderecoEmpresa;
             adicionar.Adicionar(empresa);
 
             return View();
@@ -51,12 +53,14 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult AlterarEmpresa(int IdEmpresa, string NomeEmpresa)
+        public ActionResult AlterarEmpresa(int IdEmpresa, string NomeEmpresa, int telefoneEmpresa, string enderecoEmpresa)
         {
 
             EmpresaDAO dao = new EmpresaDAO();
             var empresa = dao.Listar().FirstOrDefault(x => x.IdEmpresa == IdEmpresa);
             empresa.NomeEmpresa = NomeEmpresa;
+            empresa.TelefoneEmpresa = telefoneEmpresa;
+            empresa.EnderecoEmpresa = enderecoEmpresa;
             dao.Alterar(empresa);
             return View(empresa);
 

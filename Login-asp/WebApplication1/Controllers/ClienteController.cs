@@ -11,7 +11,7 @@ namespace WebApplication1.Controllers
     public class ClienteController : Controller
     {
         // GET: Cliente
-        public ActionResult Adicionar(string nomeCompleto, string cpf, string cnpj, string endereco, int situacaoJuridica, int categoria,
+        public ActionResult Adicionar(string nomeCompleto, string cpf, string cnpj, string endereco, int telefone, int situacaoJuridica, int categoria,
                                                        int associados, int clienteIdCliente)
 
         { 
@@ -21,6 +21,7 @@ namespace WebApplication1.Controllers
             cliente.CPF = cpf;
             cliente.CNPJ = cnpj;
             cliente.Endereco = endereco;
+            cliente.Telefone = telefone;
             cliente.SituacaoJuridica = situacaoJuridica;
             cliente.Categoria = categoria;
             cliente.Associados = associados;
@@ -60,7 +61,7 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         public ActionResult AlterarCliente(int idCliente, string nomeCompleto, string cpf, string cnpj,
-                                                    string endereco, int situacaoJuridica, int categoria, int associados, int clienteIdCliente)
+                                                    string endereco, int telefone, int situacaoJuridica, int categoria, int associados, int clienteIdCliente)
         {
 
             ClienteDAO dao = new ClienteDAO();
@@ -69,6 +70,7 @@ namespace WebApplication1.Controllers
             cliente.CPF = cpf;
             cliente.CNPJ = cnpj;
             cliente.Endereco = endereco;
+            cliente.Telefone = telefone;
             cliente.SituacaoJuridica = situacaoJuridica;
             cliente.Categoria = categoria;
             cliente.Associados = associados;
@@ -80,9 +82,6 @@ namespace WebApplication1.Controllers
 
 
         }
-
-
-
 
 
         public ActionResult Form()

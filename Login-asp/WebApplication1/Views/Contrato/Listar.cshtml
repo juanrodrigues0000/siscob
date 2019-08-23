@@ -9,9 +9,11 @@
             <h2 class="tm-block-title">Relação de contratos</h2>
             <tr>
                 <th scope="col">&nbsp;</th>
+                <th scope="col">Id do Cliente</th>
                 <th scope="col">Titular do contrato</th>
-                <th scope="col">Valor total</th>
-                <th scope="col">Garantias</th>
+                <th scope="col">Valor Total</th>
+                <th scope="col">Valor em Aberto</th>
+                <th scope="col">Quantidade de Parcelas</th>
                 <th scope="col">empresaIdEmpresa</th>
                 <th scope="col">&nbsp;</th>
             </tr>
@@ -21,9 +23,11 @@
             {
             <tr>
                 <th scope="col">&nbsp;</th>
-                <td class="tm-product-name">@contrato.NomeTitular</td>
+                <td class="tm-product-name">@contrato.IdCliente</td>
+                <td>@contrato.NomeTitular</td>
                 <td>@contrato.ValorContrato</td>
-                <td>@contrato.Garantia</td>
+                <td>@contrato.ValorEmAberto</td>
+                <td>@contrato.QuantidadeParcelas</td>
                 <td>@contrato.EmpresaIdEmpresa</td>
                 <th scope="col">&nbsp;</th>
                 <td>

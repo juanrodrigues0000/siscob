@@ -10,6 +10,8 @@ namespace siscob
         [Key]
         public int IdEmpresa { get; set; }
         public string NomeEmpresa { get; set; }
+        public int TelefoneEmpresa { get; set; }
+        public string EnderecoEmpresa { get; set; }
 
         public Empresa()
         {

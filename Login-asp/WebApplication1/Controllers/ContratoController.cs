@@ -11,24 +11,30 @@ namespace WebApplication1.Controllers
 {
     public class ContratoController : Controller
     {
+
+        double valorEmAberto; // VARIÁVEL QUE SERÁ EDITADA PELA REGRA DE NEGÓCIO EM PAGAMENTO.CONTROLLER
+
         // GET: Contrato
-        public ActionResult Adicionar(string nomeTitular, double valorContrato, string garantia, int empresaIdEmpresa, int quantidadeParcelas, int idCliente)
+        public ActionResult Adicionar(int idCliente, string nomeTitular, double valorContrato, int quantidadeParcelas, DateTime primeiroVencimento, string garantia, int empresaIdEmpresa)
         {
+
 
             Contrato contrato = new Contrato();
             ContratoDAO dao = new ContratoDAO();
+            contrato.IdCliente = idCliente;
             contrato.NomeTitular = nomeTitular;
             contrato.ValorContrato = valorContrato;
+            contrato.ValorEmAberto = valorEmAberto;
+            contrato.QuantidadeParcelas = quantidadeParcelas;
+            contrato.PrimeiroVencimento = primeiroVencimento;
             contrato.Garantia = garantia;
             contrato.EmpresaIdEmpresa = empresaIdEmpresa;
-            //contrato.Empresa = nomeEmpresa;
 
             dao.Adicionar(contrato);
             
             //int auxiliar;
 
             double valorParcela;
-
 
             for (var i = 0; i < quantidadeParcelas; i++)
             {
@@ -41,13 +47,12 @@ namespace WebApplication1.Controllers
 
                 PagamentoDAO daoPagamento = new PagamentoDAO();
                 pagamento.ValorIntegralDaParcela = valorParcela;
-                pagamento.ValorEmAberto = valorContrato;
                 pagamento.ContratoIdContrato = contrato.IdContrato; 
                                         // ^ Metodo precisa vir depois de ADICIONAR CONTRATO, para que ele tenha uma ID pra ser registrada na table pagamentos
                 pagamento.ClienteIdCliente = idCliente;
-                                        // ^ Este dado não é pedido na entidade CONTRATO
+                // ^ Este dado não é pedido na entidade CONTRATO
 
-
+                pagamento.DataVencimento = primeiroVencimento.AddMonths(i);
                 daoPagamento.Adicionar(pagamento);
 
                 //auxiliar = pagamento.IdPagamento;
@@ -96,16 +101,19 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult AlteraContrato(int idContrato, string nomeTitular, double ValorContrato, string garantia, int empresaIdEmpresa, int quantidadeParcelas, int idCliente)
+        public ActionResult AlteraContrato(int idContrato, int idCliente, string nomeTitular, double valorContrato,
+                                                                    int quantidadeParcelas, DateTime primeiroVencimento, string garantia, int empresaIdEmpresa)
         {
 
             ContratoDAO dao = new ContratoDAO();
             var contrato = dao.Listar().FirstOrDefault(x => x.IdContrato == idContrato);
+            contrato.IdCliente = idCliente;
             contrato.NomeTitular = nomeTitular;
-            contrato.ValorContrato = ValorContrato;
+            contrato.ValorContrato = valorContrato;
+            contrato.QuantidadeParcelas = quantidadeParcelas;
+            contrato.PrimeiroVencimento = primeiroVencimento;
             contrato.Garantia = garantia;
             contrato.EmpresaIdEmpresa = empresaIdEmpresa;
-            //contrato.Empresa = nomeEmpresa;
 
             dao.Alterar(contrato);
 

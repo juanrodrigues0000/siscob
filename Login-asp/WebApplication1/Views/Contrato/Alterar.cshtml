@@ -8,51 +8,74 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h2 class="tm-block-title">Alterar Dados do Contrato</h2>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(contrato => contrato.IdContrato)
-
-        <div class="form-group col-lg-6">
-            @Html.LabelFor(contrato => contrato.NomeTitular, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(contrato => contrato.NomeTitular, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(contrato => contrato.NomeTitular, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group col-lg-6">
-            @Html.LabelFor(contrato => contrato.ValorContrato, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(contrato => contrato.ValorContrato, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(contrato => contrato.ValorContrato, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group col-lg-6">
-            @Html.LabelFor(contrato => contrato.Garantia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(contrato => contrato.Garantia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(contrato => contrato.Garantia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group col-lg-6">
-            @Html.LabelFor(contrato => contrato.EmpresaIdEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(contrato => contrato.EmpresaIdEmpresa, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(contrato => contrato.EmpresaIdEmpresa, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-horizontal">
+    <h2 class="tm-block-title">Alterar Dados do Contrato</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(contrato => contrato.IdContrato)
 
 
-        <div class="form-group col-lg-6">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar alteração" class="btn btn-primary btn-block text-uppercase" />
-            </div>
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(contrato => contrato.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(contrato => contrato.IdCliente, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(contrato => contrato.IdCliente, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(contrato => contrato.NomeTitular, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(contrato => contrato.NomeTitular, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(contrato => contrato.NomeTitular, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(contrato => contrato.ValorContrato, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(contrato => contrato.ValorContrato, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(contrato => contrato.ValorContrato, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(contrato => contrato.ValorEmAberto, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(contrato => contrato.ValorEmAberto, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(contrato => contrato.ValorEmAberto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(contrato => contrato.QuantidadeParcelas, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(contrato => contrato.QuantidadeParcelas, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(contrato => contrato.QuantidadeParcelas, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(contrato => contrato.Garantia, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(contrato => contrato.Garantia, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(contrato => contrato.Garantia, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-lg-6">
+        @Html.LabelFor(contrato => contrato.EmpresaIdEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(contrato => contrato.EmpresaIdEmpresa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(contrato => contrato.EmpresaIdEmpresa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group col-lg-6">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar alteração" class="btn btn-primary btn-block text-uppercase" />
+        </div>
+    </div>
+</div>
 }
 
 <div>

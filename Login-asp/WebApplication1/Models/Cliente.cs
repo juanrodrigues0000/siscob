@@ -19,6 +19,7 @@ namespace siscob
         public string CPF { get; set; }
         public string CNPJ { get; set; }
         public string Endereco { get; set; }
+        public int Telefone { get; set; }
         public int SituacaoJuridica { get; set; }
         public int Categoria { get; set; }
         public int Associados { get; set; }
