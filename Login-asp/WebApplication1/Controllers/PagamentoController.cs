@@ -11,7 +11,6 @@ namespace WebApplication1.Controllers
     public class PagamentoController : Controller
     {
 
-        int pagamentoDeferido = 0;
 
         // GET: Pagamento
         public ActionResult Adicionar(double valorIntegralDaParcela, DateTime dataVencimento, int contratoIdContrato,
@@ -20,7 +19,7 @@ namespace WebApplication1.Controllers
             Pagamento pagamento = new Pagamento();
             PagamentoDAO dao = new PagamentoDAO();
             pagamento.ValorIntegralDaParcela = valorIntegralDaParcela;
-            pagamento.Status = pagamentoDeferido;
+            pagamento.Status = 0;
             pagamento.DataVencimento = dataVencimento;
             pagamento.ContratoIdContrato = contratoIdContrato;
             pagamento.ClienteIdCliente = clienteIdCliente;
@@ -57,42 +56,44 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult AlterarPagamento(int idpagamento, double valorIntegralDaParcela, int status, DateTime dataVencimento, int contratoIdContrato,
+        public ActionResult AlterarPagamento(int idpagamento, double valorIntegralDaParcela, int status, DateTime dataVencimento, double valorPago, int contratoIdContrato, 
                                         int clienteIdCliente)
         {
+
+            
             PagamentoDAO dao = new PagamentoDAO();
-            var pagamento = dao.Listar().FirstOrDefault(x => x.IdPagamento == idpagamento);
+            Pagamento pagamento = dao.Listar().FirstOrDefault(x => x.IdPagamento == idpagamento);
             
             ContratoDAO CtDao = new ContratoDAO();
             var contrato = new Contrato();
 
 
             pagamento.Status = 1; // STATUS DE RECEBIMENTO
-            contrato.ValorEmAberto -= valorPago;
-
-            /*
+            
             var dataAtual = DateTime.Now;
-            var outraData = new DateTime(2019, 02, 12);
-            var diferenca = dataAtual - outraData;
-            */
+            var outraData = pagamento.DataVencimento;
+
+            TimeSpan Atraso = dataAtual.Subtract(outraData);
+
+            double diasDeAtraso = Atraso.TotalDays;
+
+
+            var novoValorPagamento = pagamento.CalculaJuroDiario(valorIntegralDaParcela, diasDeAtraso);
 
             if (valorPago < valorIntegralDaParcela)
             {
                 var proximoPagamento = dao.BuscarProximoPagamento(pagamento);
-                if(proximoPagamento == null)
+                if (proximoPagamento == null)
                 {
-                    dao.Adicionar()
+                    pagamento.ValorIntegralDaParcela = valorIntegralDaParcela;
+                    pagamento.Status = status;
+                    pagamento.DataVencimento = dataVencimento;
+                    pagamento.ContratoIdContrato = contratoIdContrato;
+                    pagamento.ClienteIdCliente = clienteIdCliente;
+
+                    dao.Adicionar(pagamento);
                 }
             }
-            
-
-
-
-
-
-
-
-
 
             pagamento.ValorIntegralDaParcela = valorIntegralDaParcela;
             pagamento.Status = status;
@@ -104,6 +105,23 @@ namespace WebApplication1.Controllers
 
             return View(pagamento);
 
+        }
+
+        public ActionResult Quitar(int idpagamento, double valorIntegralDaParcela, DateTime dataVencimento, int contratoIdContrato,
+                                        int clienteIdCliente)
+        {
+            PagamentoDAO dao = new PagamentoDAO();
+            Pagamento pagamento = dao.Listar().FirstOrDefault(x => x.IdPagamento == idpagamento);
+
+            pagamento.ValorIntegralDaParcela = 0;
+            pagamento.Status = 1;
+            pagamento.DataVencimento = dataVencimento;
+            pagamento.ContratoIdContrato = contratoIdContrato;
+            pagamento.ClienteIdCliente = clienteIdCliente;
+
+            dao.Alterar(pagamento);
+
+            return View(pagamento);
         }
 
         public ActionResult Form()

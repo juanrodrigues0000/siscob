@@ -11,14 +11,16 @@ namespace WebApplication1.Controllers
     public class DocumentoController : Controller
     {
         // GET: Default
-        public ActionResult Adicionar(string descricao, int idCliente, Contrato contrato)
+        public ActionResult Adicionar(string descricao, int idCliente, int idContrato, byte[] arquivo /*Contrato contrato*/)
         {
 
             Documento documento = new Documento();
             DocumentoDAO doc = new DocumentoDAO();
             documento.Descricao = descricao;
             documento.IdCliente = idCliente;
-            //id Contrato
+            documento.Contrato_IdContrato = idContrato;
+            documento.Arquivo = arquivo;
+
             // byte []
 
             doc.Adicionar(documento);
@@ -52,14 +54,14 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult AlterarEmpresa(int iddocumento, string descricao, int idCliente, Contrato contrato)
+        public ActionResult AlterarEmpresa(int iddocumento, string descricao, int idCliente, int idContrato /*Contrato contrato*/)
         {
 
             DocumentoDAO dao = new DocumentoDAO();
             var documento = dao.Listar().FirstOrDefault(x => x.IdDocumento == iddocumento);
             documento.Descricao = descricao;
             documento.IdCliente = idCliente;
-            //id Contrato
+            documento.Contrato_IdContrato = idContrato;
             // byte []
 
             dao.Alterar(documento);

@@ -27,6 +27,15 @@ namespace siscob
 
         }
 
+        public double CalculaJuroDiario(double valorIntegralParcela, double diasAtraso)
+        {
+            diasAtraso *= valorIntegralParcela * 0.01;
+
+            valorIntegralParcela += diasAtraso;
+
+            return valorIntegralParcela;
+        }
+
     }
 
 }

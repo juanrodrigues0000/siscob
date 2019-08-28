@@ -30,6 +30,16 @@
                 <td>@contrato.QuantidadeParcelas</td>
                 <td>@contrato.EmpresaIdEmpresa</td>
                 <th scope="col">&nbsp;</th>
+
+                <td>
+                    <form action="/Contrato/Details" method="post">
+                        <input type="hidden" id="idcontrato" name="idcontrato" value="@contrato.IdContrato" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </td>
+
                 <td>
                     <form action="/Contrato/Alterar" method="post">
                         <input type="hidden" id="idcontrato" name="idcontrato" value="@contrato.IdContrato" />
@@ -42,7 +52,7 @@
                     <form action="/Contrato/Remover" method="post">
                         <input type="hidden" id="idcontrato" name="idcontrato" value="@contrato.IdContrato" />
                         <button type="submit" class="tm-product-delete-link">
-                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                            <i class="far fa-trash-alt"></i>
                         </button>
                     </form>
                 </td>
