@@ -107,17 +107,18 @@ namespace WebApplication1.Controllers
 
         }
 
-        public ActionResult Quitar(int idpagamento, double valorIntegralDaParcela, DateTime dataVencimento, int contratoIdContrato,
-                                        int clienteIdCliente)
+        public ActionResult Quitar(int idpagamento)
         {
             PagamentoDAO dao = new PagamentoDAO();
             Pagamento pagamento = dao.Listar().FirstOrDefault(x => x.IdPagamento == idpagamento);
 
-            pagamento.ValorIntegralDaParcela = 0;
+            double pgtoRealizado = 0;
+
+            pagamento.ValorIntegralDaParcela = pgtoRealizado;
             pagamento.Status = 1;
-            pagamento.DataVencimento = dataVencimento;
-            pagamento.ContratoIdContrato = contratoIdContrato;
-            pagamento.ClienteIdCliente = clienteIdCliente;
+            pagamento.DataVencimento = pagamento.DataVencimento;
+            pagamento.ContratoIdContrato = pagamento.ContratoIdContrato;
+            pagamento.ClienteIdCliente = pagamento.ClienteIdCliente;
 
             dao.Alterar(pagamento);
 

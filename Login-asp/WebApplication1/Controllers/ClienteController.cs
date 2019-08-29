@@ -11,8 +11,8 @@ namespace WebApplication1.Controllers
     public class ClienteController : Controller
     {
         // GET: Cliente
-        public ActionResult Adicionar(string nomeCompleto, string cpf, string cnpj, string endereco, int telefone, int situacaoJuridica, int categoria,
-                                                       int associados, int clienteIdCliente)
+        public ActionResult Adicionar(string nomeCompleto, string cpf, string cnpj, string endereco, int telefone, int situacaoJuridica, int categoria
+                                                     )
 
         { 
             Cliente cliente = new Cliente();
@@ -24,8 +24,7 @@ namespace WebApplication1.Controllers
             cliente.Telefone = telefone;
             cliente.SituacaoJuridica = situacaoJuridica;
             cliente.Categoria = categoria;
-            cliente.Associados = associados;
-            cliente.ClienteIdCliente = clienteIdCliente;
+ 
 
             dao.Adicionar(cliente);
                 
@@ -49,6 +48,14 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Details(int idCliente)
+        {
+            ClienteDAO dao = new ClienteDAO();
+            ViewBag.ClienteSet = dao.Listar().FirstOrDefault(x => x.IdCliente == idCliente);
+
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Alterar(int idCliente)
         {
@@ -61,7 +68,7 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         public ActionResult AlterarCliente(int idCliente, string nomeCompleto, string cpf, string cnpj,
-                                                    string endereco, int telefone, int situacaoJuridica, int categoria, int associados, int clienteIdCliente)
+                                                    string endereco, int telefone, int situacaoJuridica, int categoria)
         {
 
             ClienteDAO dao = new ClienteDAO();
@@ -73,8 +80,7 @@ namespace WebApplication1.Controllers
             cliente.Telefone = telefone;
             cliente.SituacaoJuridica = situacaoJuridica;
             cliente.Categoria = categoria;
-            cliente.Associados = associados;
-            cliente.ClienteIdCliente = clienteIdCliente;
+
 
             dao.Alterar(cliente);
 

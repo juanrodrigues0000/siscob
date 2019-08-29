@@ -358,6 +358,8 @@
     <Content Include="Views\Documento\Alterar.cshtml" />
     <Content Include="Views\Contrato\Alterar.cshtml" />
     <Content Include="Views\Pagamento\Alterar.cshtml" />
+    <Content Include="Views\Contrato\Details.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

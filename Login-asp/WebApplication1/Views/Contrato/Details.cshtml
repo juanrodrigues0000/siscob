@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div class="tm-product-table-container">
+    <table class="table table-hover tm-table-small tm-product-table">
+        <thead>
+            <h2 class="tm-block-title">Detalhes do Contrato</h2>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">Id do Contrato</th>
+                <th scope="col">Id do Cliente</th>
+                <th scope="col">Nome do Titular</th>
+                <th scope="col">Valor total do contrato</th>
+                <th scope="col">Quantidade de parcelas</th>
+                <th scope="col">Primeiro vencimento</th>
+                <th scope="col">Garantia</th>
+                <th scope="col">Id da Empresa Contratante</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <h2 class="tm-block-title">Informações</h2>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <td class="tm-product-name">@ViewBag.ContratoSet.IdContrato</td>
+                <td>@ViewBag.ContratoSet.IdCliente</td>
+                <td>@ViewBag.ContratoSet.NomeTitular</td>
+                <td>@ViewBag.ContratoSet.ValorContrato</td>
+                <td>@ViewBag.ContratoSet.QuantidadeParcelas</td>
+                <td>@ViewBag.ContratoSet.PrimeiroVencimento</td>
+                <td>@ViewBag.ContratoSet.Garantia</td>
+                <td>@ViewBag.ContratoSet.EmpresaIdEmpresa</td>
+                <th scope="col">&nbsp;</th>
+            </tr>
+
+        </tbody>
+    </table>
+    <th scope="col">&nbsp;</th>
+
+    <table class="table table-hover tm-table-small tm-product-table">
+        <thead>
+            <h2 class="tm-block-title">Histórico de pagamentos</h2>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">Valor da Parcela</th>
+                <th scope="col">Atual status de pagamento</th>
+                <th scope="col">Data de vencimento</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <h2 class="tm-block-title">Pagamentos realizados</h2>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <td>@ViewBag.PagamentoSet.ValorIntegralDaParcela</td>
+                <td>@ViewBag.PagamentoSet.Status</td>
+                <td>@ViewBag.PagamentoSet.DataVencimento</td>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </tbody>
+    </table>
+</div>

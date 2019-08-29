@@ -9,14 +9,13 @@
         <thead>
             <tr>
                 <th scope="col">&nbsp;</th>
+                <th scope="col">Id do cliente</th>
                 <th scope="col">Nome Completo</th>
                 <th scope="col">CPF</th>
                 <th scope="col">CNPJ</th>
-                <th scope="col">Endereço</th>
-                <th scope="col">Telefone</th>
+
                 <th scope="col">Situação Jurídica</th>
                 <th scope="col">Categoria</th>
-                <th scope="col">Associados</th>
                 <th scope="col">&nbsp;</th>
             </tr>
         </thead>
@@ -25,14 +24,13 @@
             {
             <tr>
                 <th scope="col">&nbsp;</th>
-                <td class="tm-product-name">@cliente.NomeCompleto</td>
+
+                <td class="tm-product-name">@cliente.IdCliente</td>
+                <td>@cliente.NomeCompleto</td>
                 <td>@cliente.CPF</td>
                 <td>@cliente.CNPJ</td>
-                <td>@cliente.Endereco</td>
-                <td>@cliente.Telefone</td>
                 <td>@cliente.SituacaoJuridica</td>
                 <td>@cliente.Categoria</td>
-                <td>@cliente.Associados</td>
                 <th scope="col">&nbsp;</th>
 
                 <td>

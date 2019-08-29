@@ -32,7 +32,8 @@ namespace WebApplication1.Controllers
 
             dao.Adicionar(contrato);
             
-            //int auxiliar;
+            double auxiliarValorParcela;                                // Usada para ALTERAR a entidade valorEmABerto na entidade CONTRATO depois 
+                                                                        //que o método do método de valor de parcelas ter calculado o montante total
 
             double valorParcela;
 
@@ -55,8 +56,12 @@ namespace WebApplication1.Controllers
                 pagamento.DataVencimento = primeiroVencimento.AddMonths(i);
                 daoPagamento.Adicionar(pagamento);
 
-                //auxiliar = pagamento.IdPagamento;
+                auxiliarValorParcela = valorParcela * quantidadeParcelas;
             }
+
+            contrato.ValorEmAberto = auxiliarValorParcela;
+
+            da
 
             return View();
 
@@ -78,8 +83,7 @@ namespace WebApplication1.Controllers
         public ActionResult Listar()
         {
             ContratoDAO dao = new ContratoDAO();
-            IList<Contrato> contratos = dao.Listar();
-            ViewBag.ContratoSet = contratos;
+            ViewBag.ContratoSet = dao.Listar();
             return View();
         }
 
@@ -92,6 +96,17 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Details(int idContrato)
+        { 
+            ContratoDAO dao = new ContratoDAO();
+            PagamentoDAO daoPgto = new PagamentoDAO();
+
+            ViewBag.ContratoSet = dao.Listar().FirstOrDefault(x => x.IdContrato == idContrato);
+            ViewBag.PagamentoSet = daoPgto.Listar().FirstOrDefault(x => x.ContratoIdContrato == idContrato);
+
+            return View();
+        }
+
 
         public ActionResult Alterar(int idContrato)
         {
@@ -101,13 +116,13 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult AlteraContrato(int idContrato, int idCliente, string nomeTitular, double valorContrato,
+        public ActionResult AlteraContrato(int idContrato, string nomeTitular, double valorContrato,
                                                                     int quantidadeParcelas, DateTime primeiroVencimento, string garantia, int empresaIdEmpresa)
         {
 
             ContratoDAO dao = new ContratoDAO();
             var contrato = dao.Listar().FirstOrDefault(x => x.IdContrato == idContrato);
-            contrato.IdCliente = idCliente;
+            contrato.IdCliente = contrato.IdCliente;
             contrato.NomeTitular = nomeTitular;
             contrato.ValorContrato = valorContrato;
             contrato.QuantidadeParcelas = quantidadeParcelas;
