@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="tm-product-table-container">
+    <table class="table table-hover tm-table-small tm-product-table">
+        <thead>
+            <h2 class="tm-block-title">Detalhes da Empresa</h2>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">Id da Empresa</th>
+                <th scope="col">Nome da Empresa</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <h2 class="tm-block-title">Informações</h2>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <td class="tm-product-name">@ViewBag.EmpresaSet.IdEmpresa</td>
+                <td>@ViewBag.EmpresaSet.NomeEmpresa</td>
+                <td>@ViewBag.EmpresaSet.TelefoneEmpresa</td>
+                <td>@ViewBag.EmpresaSet.EnderecoEmpresa</td>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

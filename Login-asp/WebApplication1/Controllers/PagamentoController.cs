@@ -11,7 +11,6 @@ namespace WebApplication1.Controllers
     public class PagamentoController : Controller
     {
 
-
         // GET: Pagamento
         public ActionResult Adicionar(double valorIntegralDaParcela, DateTime dataVencimento, int contratoIdContrato,
                                         int clienteIdCliente)
@@ -39,13 +38,21 @@ namespace WebApplication1.Controllers
 
         public ActionResult Remover(int idpagamento)
         {
-
             PagamentoDAO dao = new PagamentoDAO();
             var pagamento = dao.Listar().FirstOrDefault(x => x.IdPagamento == idpagamento);
             dao.Remover(pagamento);
-            return View();
+            return RedirectToAction("Listar", "Pagamento");
         }
 
+        public ActionResult Details(int idPagamento)
+        {
+            PagamentoDAO dao = new PagamentoDAO();
+            ContratoDAO daoContrato = new ContratoDAO();
+
+            ViewBag.PagamentoSet = dao.Listar().FirstOrDefault(x => x.IdPagamento == idPagamento);
+
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Alterar(int idpagamento)

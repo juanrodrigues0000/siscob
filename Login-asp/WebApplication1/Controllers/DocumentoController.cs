@@ -44,6 +44,13 @@ namespace WebApplication1.Controllers
             dao.Remover(documento);
             return View();
         }
+        public ActionResult Details(int idDocumento)
+        {
+            DocumentoDAO dao = new DocumentoDAO();
+            ViewBag.DocumentoSet = dao.Listar().FirstOrDefault(x => x.IdDocumento == idDocumento);
+
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Alterar(int iddocumento)

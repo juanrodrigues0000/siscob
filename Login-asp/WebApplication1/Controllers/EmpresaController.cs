@@ -44,6 +44,15 @@ namespace WebApplication1.Controllers
            return View();
         }
 
+        public ActionResult Details(int idEmpresa)
+        {
+            EmpresaDAO dao = new EmpresaDAO();
+
+            ViewBag.EmpresaSet = dao.Listar().FirstOrDefault(x => x.IdEmpresa == idEmpresa);
+
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Alterar(int IdEmpresa, string NomeEmpresa)
         {
@@ -65,8 +74,6 @@ namespace WebApplication1.Controllers
             return View(empresa);
 
         }
-
-
 
         public ActionResult Form()
         {

@@ -44,6 +44,15 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Details(int idFuncionario)
+        {
+            FuncionarioDAO dao = new FuncionarioDAO();
+
+            ViewBag.FuncionarioSet = dao.Listar().FirstOrDefault(x => x.IdFuncionario == idFuncionario);
+
+            return View();
+        }
+
 
         [HttpPost]
         public ActionResult Alterar(int IdFuncionario, string nome, string login, string senha, string funcao)

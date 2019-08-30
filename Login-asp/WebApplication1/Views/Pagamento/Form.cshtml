@@ -17,13 +17,17 @@
             <select class="custom-select" id="contratoIdContrato" name="contratoIdContrato">
                 @foreach (var contrato in contratos)
                 {
-                <option value="@contrato.IdContrato">@contrato.NomeTitular - @contrato.ValorContrato</option>
+                    <option value="@contrato.IdContrato">@contrato.NomeTitular - @contrato.ValorContrato</option>
                 }
             </select>
         </div>
         <div class="form-group col-lg-6">
             <label for="clienteIdCliente">Id do cliente</label>
             <input id="clienteIdCliente" name="clienteIdCliente" type="text" class="form-control validate">
+        </div>
+        <div class="form-group col-lg-6">
+            <label for="dataVencimento">Data</label>
+            <input id="dataVencimento" name="dataVencimento" type="text" class="form-control validate">
         </div>
         <div class="form-group col-lg-6">
             <label class="tm-hide-sm">&nbsp;</label>

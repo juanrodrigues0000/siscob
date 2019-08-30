@@ -21,6 +21,8 @@ namespace WebApplication1.Controllers
 
             Contrato contrato = new Contrato();
             ContratoDAO dao = new ContratoDAO();
+            Cliente cliente = new Cliente();
+
             contrato.IdCliente = idCliente;
             contrato.NomeTitular = nomeTitular;
             contrato.ValorContrato = valorContrato;
@@ -32,7 +34,7 @@ namespace WebApplication1.Controllers
 
             dao.Adicionar(contrato);
             
-            double auxiliarValorParcela;                                // Usada para ALTERAR a entidade valorEmABerto na entidade CONTRATO depois 
+            double auxiliarValorParcela = 0;                                // Usada para ALTERAR a entidade valorEmABerto na entidade CONTRATO depois 
                                                                         //que o método do método de valor de parcelas ter calculado o montante total
 
             double valorParcela;
@@ -61,7 +63,7 @@ namespace WebApplication1.Controllers
 
             contrato.ValorEmAberto = auxiliarValorParcela;
 
-            da
+            dao.Alterar(contrato);
 
             return View();
 

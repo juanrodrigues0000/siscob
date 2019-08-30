@@ -19,42 +19,49 @@
         <tbody>
             @foreach (var empresa in ViewBag.EmpresaSet)
             {
-            <tr>
-                <th scope="col">&nbsp;</th>
-                <td class="tm-product-name">@empresa.NomeEmpresa</td>
-                <td class="tm-product-name">@empresa.TelefoneEmpresa</td>
-                <td class="tm-product-name">@empresa.EnderecoEmpresa</td>
-                <th scope="col">&nbsp;</th>
+                <tr>
+                    <th scope="col">&nbsp;</th>
+                    <td class="tm-product-name">@empresa.NomeEmpresa</td>
+                    <td class="tm-product-name">@empresa.TelefoneEmpresa</td>
+                    <td class="tm-product-name">@empresa.EnderecoEmpresa</td>
+                    <th scope="col">&nbsp;</th>
 
-                <td>
-                    <form action="/Empresa/Details" method="post">
-                        <input type="hidden" id="idempresa" name="idempresa" value="@empresa.IdEmpresa" />
-                        <button type="submit" class="tm-product-delete-link">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </td>
+                    <td>
+                        <form action="/Empresa/Details" method="post">
+                            <input type="hidden" id="idempresa" name="idempresa" value="@empresa.IdEmpresa" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </td>
 
 
-                <td>
-                    <form action="/Empresa/Alterar" method="post">
-                        <input type="hidden" id="idempresa" name="idempresa" value="@empresa.IdEmpresa" />
-                        <button type="submit" class="tm-product-delete-link">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <form action="/Empresa/Remover" method="post">
-                        <input type="hidden" id="idempresa" name="idempresa" value="@empresa.IdEmpresa" />
-                        <button type="submit" class="tm-product-delete-link">
-                            <i class="far fa-trash-alt"></i>
-                        </button>
-                    </form>
-                </td>
-            </tr>
+                    <td>
+                        <form action="/Empresa/Alterar" method="post">
+                            <input type="hidden" id="idempresa" name="idempresa" value="@empresa.IdEmpresa" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/Empresa/Remover" method="post">
+                            <input type="hidden" id="idempresa" name="idempresa" value="@empresa.IdEmpresa" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
 </div>
 
+
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+
+    02  $('input#txt_consulta').quicksearch('table#tabela tbody tr');
+
+ </script>

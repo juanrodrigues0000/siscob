@@ -23,7 +23,7 @@
         <div class="form-group col-lg-6">
             <label for="quantidadeParcelas"> Quantidade de Parcelas do Contrato</label>
             <input id="quantidadeParcelas" name="quantidadeParcelas" type="text" class="form-control validate" />
-        </div>       
+        </div>
         <div class="form-group col-lg-6">
             <label for="primeiroVencimento"> Primeiro Vencimento </label>
             <input id="primeiroVencimento" name="primeiroVencimento" type="text" class="form-control validate" />
@@ -32,8 +32,6 @@
             <label for="garantia"> Garantias </label>
             <input id="garantia" name="garantia" type="text" class="form-control validate" />
         </div>
-
-
         <div class="form-group col-lg-6">
             <label for="empresaIdEmpresa"> Id empresa</label>
             <input id="empresaIdEmpresa" name="empresaIdEmpresa" type="text" class="form-control validate" />
@@ -46,13 +44,6 @@
 
         <div class="form-group col-lg-6">
             <label class="tm-hide-sm">&nbsp;</label>
-            <button onclick="Montante(valorContrato, QuantidadeParcelas)" class="btn btn-primary btn-block text-uppercase">
-                Projeção do valor
-            </button>
-        </div>
-
-        <div class="form-group col-lg-6">
-            <label class="tm-hide-sm">&nbsp;</label>
             <button type="submit" class="btn btn-primary btn-block text-uppercase">
                 Cadastrar
             </button>
@@ -60,6 +51,15 @@
 
 
     </form>
+
+
+    <div class="form-group col-lg-6">
+        <label class="tm-hide-sm">&nbsp;</label>
+        <button onclick="Montante(valorContrato, quantidadeParcelas)" class="btn btn-primary btn-block text-uppercase">
+            Projeção do valor
+        </button>
+    </div>
+
 </div>
 
 
