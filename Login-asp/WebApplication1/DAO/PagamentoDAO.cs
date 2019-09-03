@@ -65,5 +65,26 @@ namespace WebApplication1.DAO
             }
         }
 
+        public IList<Pagamento> PagamentosEmAtraso()
+        {
+            var dataAtual = DateTime.Now;
+            using (var contexto = new SiscobContext())
+            {
+                var resultado = contexto.PagamentoSet
+                    .Where(x => x.DataVencimento < dataAtual && x.Status == 0);
+                return resultado.ToList();
+            }
+        }
+        public IList<Pagamento> PagamentosPendentesFuturos()
+        {
+            var dataAtual = DateTime.Now;
+            using (var contexto = new SiscobContext())
+            {
+                var resultado = contexto.PagamentoSet
+                    .Where(x => x.DataVencimento >= dataAtual && x.DataVencimento <= dataAtual.AddDays(7) && x.Status == 0);
+                return resultado.ToList();
+            }
+        }
+
     }
 }

@@ -29,9 +29,9 @@
                 <td>@pagamento.ClienteIdCliente</td>
                 <th scope="col">&nbsp;</th>
                 <td>
-                    <form action="/Pagamento/Quitar" method="post">
+                    <form action="#" method="post">
                         <input type="hidden" id="idpagamento" name="idpagamento" value="@pagamento.IdPagamento" />
-                        <button type="submit" class="tm-product-delete-link">
+                        <button onclick="quitarParcela()" class="tm-product-delete-link">
                             <i class="fas fa-check"></i>
                         </button>
                     </form>
@@ -71,3 +71,23 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    function quitarParcela() {
+        var url = "@Url.Action("Quitar", "Pagamento")";
+        $.post({
+            url = url,
+            data = { valorIntegralDaParcela: pgtoRealizado, status = 1 },
+            sucess: atualiza
+        });
+
+    }
+    function atualiza(pgtoRealizado, status)
+    {
+        var elemento = $("#pgtoRealizado", "#Status");
+        elemento.html(pgtoRealizado, status);
+
+    }
+
+</script>

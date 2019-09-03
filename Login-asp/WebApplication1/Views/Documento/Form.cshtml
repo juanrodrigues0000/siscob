@@ -22,12 +22,25 @@
 
 
 
+
+        <div class="form-group col-lg-6">
+            <label for="tipo">Tipo</label>
+            <input id="tipo" name="tipo" type="text" class="form-control validate" />
+        </div>
+
+        <div class="form-group col-lg-6">
+            <label for="tamanho">Tamanho</label>
+            <input id="tamanho" name="tamanho" type="text" class="form-control validate" />
+        </div>
+
+
+
         <div class="form-group col-lg-6">
             <label class="tm-hide-sm">&nbsp;</label>
-            <input id="fileInput" type="file" style="display:none;">
+            <input id="arquivo" type="file" style="display:none;">
             <input type="button" class="btn btn-primary btn-block text-uppercase" value="Fazer upload do documento" onclick="document.getElementById('fileInput').click();">
         </div>
-         
+
 
         <div class="form-group col-lg-6">
             <label for="idCliente" class="tm-hide-sm">&nbsp;</label>
@@ -42,8 +55,51 @@
 </div>
 
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        var interval = 0;
+        var options = {
+            action: 'upload.ashx',
+            autoSubmit: true,
+            onSubmit: function (file, ext) {
+                {
+                    var button = $('#msg')
+                    button.text('Uploading');
+                    this.disable();
+                    interval = window.setInterval(function () {
+                        {
+                            var text = button.text();
+                            if (button.text().length < 13) {
 
-<div class="form-group col-lg-6">
-    <label class="tm-hide-sm">&nbsp;</label>
-    <input id="file" type="file" class="btn btn-primary btn-block text-uppercase">
+                                {
+                                    button.text(button.text() + '.');
+                                }
+                            } else {
+
+                                {
+                                    button.text('Uploading');
+                                }
+                            }
+                        }
+                    }, 200);
+                }
+            },
+            onComplete: function (file, response) {
+                var button = $('#msg')
+                button.text(response.toString());
+                button.removeClass('hover');
+                window.clearInterval(interval);
+                this.enable();
+            }
+        };
+        new AjaxUpload('#myFileUpload', options);
+    });
+</script>
+
+
+
+
+<div>
+    <input id="myFileUpload" type="file" />
+    <p id="msg"></p>
 </div>

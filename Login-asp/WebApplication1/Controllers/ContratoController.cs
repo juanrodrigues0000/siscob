@@ -76,7 +76,7 @@ namespace WebApplication1.Controllers
 
             Pagamento pagamento = new Pagamento();
 
-            resposta = pagamento.CalculoContrato(valorContrato, quantidadeParcelas);
+            resposta = pagamento.CalculoContrato(valorContrato, quantidadeParcelas)* quantidadeParcelas;
 
             return resposta.ToString();
 

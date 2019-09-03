@@ -55,9 +55,12 @@
 
     <div class="form-group col-lg-6">
         <label class="tm-hide-sm">&nbsp;</label>
-        <button onclick="Montante(valorContrato, quantidadeParcelas)" class="btn btn-primary btn-block text-uppercase">
+        <button onclick="Montante()" class="btn btn-primary btn-block text-uppercase">
             Projeção do valor
         </button>
+    </div>
+    <div>
+        <span id="quantidade">R$ 0,00</span>
     </div>
 
 </div>
@@ -69,15 +72,22 @@
 
 
 
-  function Montante(total, parcelas){
-    var url = "@Url.Action("CalculoMontante", "Contrato")";
-      $.get(url, { valorContrato: total, quantidadeParcelas: parcelas }, atualiza );
+    function Montante() {
+        var total = $("#valorContrato").val();
+        var parcelas = $("#quantidadeParcelas").val();
+
+        var url = "@Url.Action("CalculoMontante", "Contrato")";
+        $.get({
+            url: url, 
+            data: { valorContrato: total, quantidadeParcelas: parcelas },
+            success: atualiza
+        });
   }
 
     function atualiza(resposta) {
     console.log(resposta);
-    var elemento = $("#quantidade" + resposta.Id);
-      elemento.html(resposta.Quantidade);
+        var elemento = $("#quantidade");
+        elemento.html(resposta);
       
     }
 

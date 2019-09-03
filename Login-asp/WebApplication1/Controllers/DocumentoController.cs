@@ -1,17 +1,19 @@
 ﻿using siscob;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.DAO;
+using static WebApplication1.Models.UploadFileResult;
 
 namespace WebApplication1.Controllers
 {
     public class DocumentoController : Controller
     {
         // GET: Default
-        public ActionResult Adicionar(string descricao, int idCliente, int idContrato, byte[] arquivo /*Contrato contrato*/)
+        public ActionResult Adicionar(string descricao, int idCliente, int idContrato /*byte[] arquivo Contrato contrato*/)
         {
 
             Documento documento = new Documento();
@@ -19,7 +21,8 @@ namespace WebApplication1.Controllers
             documento.Descricao = descricao;
             documento.IdCliente = idCliente;
             documento.Contrato_IdContrato = idContrato;
-            documento.Arquivo = arquivo;
+
+
 
             // byte []
 
@@ -61,7 +64,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult AlterarEmpresa(int iddocumento, string descricao, int idCliente, int idContrato /*Contrato contrato*/)
+        public ActionResult AlterarDocumento(int iddocumento, string descricao, int idCliente, int idContrato /*Contrato contrato*/)
         {
 
             DocumentoDAO dao = new DocumentoDAO();
@@ -77,7 +80,12 @@ namespace WebApplication1.Controllers
 
 
 
-        public ActionResult Form()
+
+
+
+
+
+    public ActionResult Form()
         {
             return View();
         }
