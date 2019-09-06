@@ -16,13 +16,13 @@ namespace WebApplication1.Context
         public DbSet<Pagamento> PagamentoSet { get; set; }
         public DbSet<Contrato> ContratoSet { get; set; }
 
-       // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       // {
-            //optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\BENNER\\SISCOB\\NEW FOLDER\\SISCOB_ENTITY\\SISCOB\\TESTEDB.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-        //}
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\GITHUB\\siscob\\Login-asp\\WebApplication1\\TesteDB.mdf;Integrated Security = True; Connect Timeout = 30");
-        }
+            {
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AgoraDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            }
+
+
     }
 }

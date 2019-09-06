@@ -320,10 +320,6 @@
     <Content Include="Content\Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Content\Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\Scripts\modernizr-2.8.3.js" />
-    <Content Include="TesteDB.mdf" />
-    <Content Include="TesteDB_log.ldf">
-      <DependentUpon>TesteDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -365,6 +361,12 @@
     <Content Include="Views\Empresa\Details.cshtml" />
     <Content Include="Views\Funcionario\Details.cshtml" />
     <Content Include="Views\Pagamento\Details.cshtml" />
+    <Content Include="Views\Cliente\Pesquisa.cshtml" />
+    <Content Include="Views\Contrato\Pesquisa.cshtml" />
+    <Content Include="Views\Empresa\Pesquisa.cshtml" />
+    <Content Include="Views\Funcionario\Pesquisa.cshtml" />
+    <Content Include="Views\Pagamento\Pesquisa.cshtml" />
+    <Content Include="Views\Documento\Pesquisa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

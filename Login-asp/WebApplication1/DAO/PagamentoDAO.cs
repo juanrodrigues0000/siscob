@@ -47,9 +47,6 @@ namespace WebApplication1.DAO
             {
                 contexto.Entry(pagamento).State = EntityState.Modified;
                 contexto.SaveChanges();
-
-                //contexto.PagamentoSet.Attach(pagamento);
-                //contexto.SaveChanges();
             }
         }
 
@@ -58,7 +55,7 @@ namespace WebApplication1.DAO
             using (var contexto = new SiscobContext())
             {
                 var resultado = contexto.PagamentoSet
-                    .Where(x => x.DataVencimento > pagamentoAtual.DataVencimento && x.ContratoIdContrato == pagamentoAtual.ContratoIdContrato)
+                    .Where(x => x.DataVencimento > pagamentoAtual.DataVencimento && x.IdContrato == pagamentoAtual.IdContrato)
                     .OrderBy(x => x.DataVencimento)
                     .FirstOrDefault();
                 return resultado;

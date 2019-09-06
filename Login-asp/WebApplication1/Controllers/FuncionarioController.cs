@@ -79,6 +79,18 @@ namespace WebApplication1.Controllers
 
         }
 
+        public ActionResult Pesquisa(string nomeFuncionario)
+        {
+
+            FuncionarioDAO dao = new FuncionarioDAO();
+            IList<Funcionario> funcionario = dao.Listar();
+            var Funcionario = funcionario.Where(a => a.Nome.ToLower().Contains(nomeFuncionario.ToLower()));
+            ViewBag.FuncionarioSet = Funcionario;
+
+            return View();
+
+        }
+
         public ActionResult Form()
         {
             return View();

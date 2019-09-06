@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Pesquisa";
+}
+
+<div class="tm-product-table-container">
+    <table class="table table-hover tm-table-small tm-product-table">
+        <thead>
+            <h2 class="tm-block-title">Resultado da Pesquisa</h2>
+
+        <tbody>
+            @foreach (var documento in ViewBag.DocumentoSet)
+            {
+                <tr>
+                    <th scope="col">&nbsp;</th>
+                    <td class="tm-product-name">@documento.Descricao</td>
+                    <td>@documento.IdCliente</td>
+                    <td>@documento.Contrato_IdContrato</td>
+                    <th scope="col">&nbsp;</th>
+                    <td>
+                        <form action="/Documento/Details" method="post">
+                            <input type="hidden" id="iddocumento" name="iddocumento" value="@documento.IdDocumento" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/Documento/Alterar" method="post">
+                            <input type="hidden" id="iddocumento" name="iddocumento" value="@documento.IdDocumento" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/Documento/Remover" method="post">
+                            <input type="hidden" id="iddocumento" name="iddocumento" value="@documento.IdDocumento" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

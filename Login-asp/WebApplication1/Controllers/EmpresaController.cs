@@ -27,7 +27,7 @@ namespace WebApplication1.Controllers
 
             return View();
         }
-                                             
+
         public ActionResult Listar()
         {
             EmpresaDAO dao = new EmpresaDAO();
@@ -72,6 +72,19 @@ namespace WebApplication1.Controllers
             empresa.EnderecoEmpresa = enderecoEmpresa;
             dao.Alterar(empresa);
             return View(empresa);
+
+        }
+
+
+        public ActionResult Pesquisa(string nomeEmpresa)
+        {
+
+            EmpresaDAO dao = new EmpresaDAO();
+            IList<Empresa> empresa = dao.Listar();
+            var Empresa = empresa.Where(a => a.NomeEmpresa.ToLower().Contains(nomeEmpresa.ToLower()));
+            ViewBag.EmpresaSet = Empresa;
+
+            return View();
 
         }
 

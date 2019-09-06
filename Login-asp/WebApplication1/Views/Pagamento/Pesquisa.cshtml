@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Pesquisa";
+}
+
+
+<div class="tm-product-table-container">
+    <table class="table table-hover tm-table-small tm-product-table">
+        <thead>
+            <h2 class="tm-block-title">Resultado de pesquisa</h2>
+        <tbody>
+            @foreach (var pagamento in ViewBag.PagamentoSet)
+            {
+                <tr>
+                    <th scope="col">&nbsp;</th>
+                    <td class="tm-product-name">@Convert.ToDouble(pagamento.ValorIntegralDaParcela)</td>
+                    <td>@pagamento.Status</td>
+                    <td>@pagamento.DataVencimento</td>
+                    <td>@pagamento.IdContrato</td>
+                    <td>@pagamento.IdCliente</td>
+                    <th scope="col">&nbsp;</th>
+                    <td>
+                        <form action="./Quitar" method="post">
+                            <input type="hidden" id="idpagamento" name="idpagamento" value="@pagamento.IdPagamento" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="fas fa-check"></i>
+                            </button>
+                        </form>
+                    </td>
+
+                    <th scope="col">&nbsp;</th>
+                    <td>
+                        <form action="/Pagamento/Details" method="post">
+                            <input type="hidden" id="idpagamento" name="idpagamento" value="@pagamento.IdPagamento" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </td>
+
+
+
+                    <td>
+                        <form action="/Pagamento/Alterar" method="post">
+                            <input type="hidden" id="idpagamento" name="idpagamento" value="@pagamento.IdPagamento" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/Pagamento/Remover" method="post">
+                            <input type="hidden" id="idpagamento" name="idpagamento" value="@pagamento.IdPagamento" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

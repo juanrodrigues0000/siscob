@@ -3,6 +3,22 @@
     ViewBag.Title = "Listar";
 }
 
+<h2 class="tm-block-title">Faça sua pesquisa</h2>
+
+<form action="/Pagamento/Pesquisa" method="post">
+    <div class="input-group md-form form-sm form-2 pl-0">
+        <input class="form-control my-0 py-1 lime-border" type="text" placeholder="Pesquise pelo ID" aria-label="Search">
+        <div class="input-group-append">
+            <input type="hidden" id="idpagamento" name="idpagamento" value="idpagamento" />
+            <button type="submit">
+                <span class="input-group-text lime lighten-2" id="idpagamento">
+                    <i class="fas fa-search"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+</form>
+<th scope="col">&nbsp;</th>
 <div class="tm-product-table-container">
     <table class="table table-hover tm-table-small tm-product-table">
         <thead>
@@ -22,20 +38,34 @@
             {
             <tr>
                 <th scope="col">&nbsp;</th>
-                <td class="tm-product-name">@Convert.ToDouble(pagamento.ValorIntegralDaParcela)</td>
-                <td>@pagamento.Status</td>
+                <td class="tm-product-name" id="ValorIntegralDaParcela_@(pagamento.IdPagamento)">@Convert.ToDouble(pagamento.ValorIntegralDaParcela)</td>
+                <td id="Status_@(pagamento.IdPagamento)" >@pagamento.Status</td>
                 <td>@pagamento.DataVencimento</td>
-                <td>@pagamento.ContratoIdContrato</td>
-                <td>@pagamento.ClienteIdCliente</td>
+                <td>@pagamento.IdContrato</td>
+                <td>@pagamento.IdCliente</td>
                 <th scope="col">&nbsp;</th>
+
                 <td>
                     <form action="#" method="post">
                         <input type="hidden" id="idpagamento" name="idpagamento" value="@pagamento.IdPagamento" />
-                        <button onclick="quitarParcela()" class="tm-product-delete-link">
+                        <button onclick="Pagar(@pagamento.IdPagamento)" class="tm-product-delete-link preventdefault">
                             <i class="fas fa-check"></i>
                         </button>
                     </form>
                 </td>
+
+
+
+
+                <td>
+                    <form action="./Quitar" method="post">
+                        <input type="hidden" id="idpagamento" name="idpagamento" value="@pagamento.IdPagamento" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </form>
+                </td>
+
 
                 <th scope="col">&nbsp;</th>
                 <td>
@@ -72,22 +102,20 @@
     </table>
 </div>
 
-<script type="text/javascript" src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="~/Content/Scripts/jquery-3.3.1.js"></script>
 <script type="text/javascript">
-    function quitarParcela() {
+
+
+    function Pagar(Id) {
         var url = "@Url.Action("Quitar", "Pagamento")";
-        $.post({
-            url = url,
-            data = { valorIntegralDaParcela: pgtoRealizado, status = 1 },
-            sucess: atualiza
-        });
-
+        $.post(url, { idpagamento: Id }, Atualiza);
     }
-    function atualiza(pgtoRealizado, status)
-    {
-        var elemento = $("#pgtoRealizado", "#Status");
-        elemento.html(pgtoRealizado, status);
-
+    function Atualiza(pagamento) {
+        $("#Status_" + pagamento.IdPagamento).text(pagamento.Status);
+        $("#ValorIntegralDaParcela_" + pagamento.IdPagamento).text(pagamento.ValorIntegralDaParcela);
     }
 
+    $(".preventdefault").on('click', function (e) {
+        e.preventDefault();
+    });
 </script>

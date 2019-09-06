@@ -6,7 +6,7 @@
 
 <div class="tm-bg-primary-dark tm-block tm-block-settings">
     <h2 class="tm-block-title">Cadastrar novos documentos</h2>
-    <form action="Adicionar" method="post" class="tm-signup-form row">
+    <form action="Adicionar" method="post" enctype="multipart/form-data" class="tm-signup-form row">
         <div class="form-group col-lg-6">
             <label for="descricao">Descrição do documento</label>
             <input id="descricao" name="descricao" type="text" class="form-control validate" />
@@ -41,6 +41,10 @@
             <input type="button" class="btn btn-primary btn-block text-uppercase" value="Fazer upload do documento" onclick="document.getElementById('fileInput').click();">
         </div>
 
+        <div class="form-group col-lg-6">
+            <input id="arquivo" name="arquivo" type="file" />
+            <p id="msg"></p>
+        </div>
 
         <div class="form-group col-lg-6">
             <label for="idCliente" class="tm-hide-sm">&nbsp;</label>
@@ -49,6 +53,7 @@
             </button>
         </div>
 
+        <a href="~/uploads/ajax1.zip">Teste</a>
 
 
     </form>
@@ -99,7 +104,4 @@
 
 
 
-<div>
-    <input id="myFileUpload" type="file" />
-    <p id="msg"></p>
-</div>
+

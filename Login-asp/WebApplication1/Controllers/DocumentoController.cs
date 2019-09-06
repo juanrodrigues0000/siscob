@@ -13,20 +13,20 @@ namespace WebApplication1.Controllers
     public class DocumentoController : Controller
     {
         // GET: Default
-        public ActionResult Adicionar(string descricao, int idCliente, int idContrato /*byte[] arquivo Contrato contrato*/)
+        public ActionResult Adicionar(string descricao, int idCliente, int idContrato, string arquivo)
         {
 
             Documento documento = new Documento();
             DocumentoDAO doc = new DocumentoDAO();
             documento.Descricao = descricao;
             documento.IdCliente = idCliente;
-            documento.Contrato_IdContrato = idContrato;
+            documento.IdContrato = idContrato;
 
 
 
             // byte []
-
-            doc.Adicionar(documento);
+            HttpPostedFileBase arquivoConteudo = Request.Files[0];
+            doc.Adicionar(documento, arquivo, arquivoConteudo);
 
             return View();
         }
@@ -71,7 +71,7 @@ namespace WebApplication1.Controllers
             var documento = dao.Listar().FirstOrDefault(x => x.IdDocumento == iddocumento);
             documento.Descricao = descricao;
             documento.IdCliente = idCliente;
-            documento.Contrato_IdContrato = idContrato;
+            documento.IdContrato = idContrato;
             // byte []
 
             dao.Alterar(documento);
@@ -79,13 +79,20 @@ namespace WebApplication1.Controllers
         }
 
 
+        public ActionResult Pesquisa(int iddocumento)
+        {
+
+            DocumentoDAO dao = new DocumentoDAO();
+            IList<Documento> documentos = dao.Listar();
+            var Documento = documentos.Where(a => a.IdDocumento == iddocumento);
+            ViewBag.DocumentoSet = Documento;
+
+            return View();
+        }
 
 
 
-
-
-
-    public ActionResult Form()
+        public ActionResult Form()
         {
             return View();
         }

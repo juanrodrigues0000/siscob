@@ -20,8 +20,8 @@ namespace WebApplication1.Controllers
             pagamento.ValorIntegralDaParcela = valorIntegralDaParcela;
             pagamento.Status = 0;
             pagamento.DataVencimento = dataVencimento;
-            pagamento.ContratoIdContrato = contratoIdContrato;
-            pagamento.ClienteIdCliente = clienteIdCliente;
+            pagamento.IdContrato = contratoIdContrato;
+            pagamento.IdCliente = clienteIdCliente;
 
             dao.Adicionar(pagamento);
 
@@ -95,8 +95,8 @@ namespace WebApplication1.Controllers
                     pagamento.ValorIntegralDaParcela = valorIntegralDaParcela;
                     pagamento.Status = status;
                     pagamento.DataVencimento = dataVencimento;
-                    pagamento.ContratoIdContrato = contratoIdContrato;
-                    pagamento.ClienteIdCliente = clienteIdCliente;
+                    pagamento.IdContrato = contratoIdContrato;
+                    pagamento.IdCliente = clienteIdCliente;
 
                     dao.Adicionar(pagamento);
                 }
@@ -105,8 +105,8 @@ namespace WebApplication1.Controllers
             pagamento.ValorIntegralDaParcela = valorIntegralDaParcela;
             pagamento.Status = status;
             pagamento.DataVencimento = dataVencimento;
-            pagamento.ContratoIdContrato = contratoIdContrato;
-            pagamento.ClienteIdCliente = clienteIdCliente;
+            pagamento.IdContrato = contratoIdContrato;
+            pagamento.IdCliente = clienteIdCliente;
 
             dao.Alterar(pagamento);
 
@@ -124,12 +124,23 @@ namespace WebApplication1.Controllers
             pagamento.ValorIntegralDaParcela = pgtoRealizado;
             pagamento.Status = 1;
             pagamento.DataVencimento = pagamento.DataVencimento;
-            pagamento.ContratoIdContrato = pagamento.ContratoIdContrato;
-            pagamento.ClienteIdCliente = pagamento.ClienteIdCliente;
+            pagamento.IdContrato = pagamento.IdContrato;
+            pagamento.IdCliente = pagamento.IdCliente;
 
             dao.Alterar(pagamento);
 
-            return View(pagamento);
+            return Json(pagamento);
+        }
+
+        public ActionResult Pesquisa(int idpagamento)
+        {
+
+            PagamentoDAO dao = new PagamentoDAO();
+            IList<Pagamento> pagamentos = dao.Listar();
+            var Pagamento = pagamentos.Where(a => a.IdPagamento == idpagamento);
+            ViewBag.PagamentoSet = Pagamento;
+
+            return View();
         }
 
         public ActionResult Form()

@@ -11,8 +11,7 @@ namespace WebApplication1.Controllers
     public class ClienteController : Controller
     {
         // GET: Cliente
-        public ActionResult Adicionar(string nomeCompleto, string cpf, string cnpj, string endereco, int telefone, int situacaoJuridica, int categoria
-                                                     )
+        public ActionResult Adicionar(string nomeCompleto, string cpf, string cnpj, string endereco, int telefone, int situacaoJuridica, int categoria)
 
         { 
             Cliente cliente = new Cliente();
@@ -28,7 +27,7 @@ namespace WebApplication1.Controllers
 
             dao.Adicionar(cliente);
                 
-            return View();
+            return View("Form");
         }
 
         public ActionResult Listar()
@@ -53,7 +52,7 @@ namespace WebApplication1.Controllers
             ClienteDAO dao = new ClienteDAO();
             ViewBag.ClienteSet = dao.Listar().FirstOrDefault(x => x.IdCliente == idCliente);
 
-            return View();
+            return RedirectToAction("Listar");
         }
 
         [HttpPost]
@@ -84,10 +83,23 @@ namespace WebApplication1.Controllers
 
             dao.Alterar(cliente);
 
-            return View(cliente);
-
+            return RedirectToAction("Listar");
 
         }
+
+
+        public ActionResult Pesquisa(string nome)
+        {
+
+            ClienteDAO dao = new ClienteDAO();
+            IList<Cliente> cl = dao.Listar();
+                var cliente = cl.Where(a => a.NomeCompleto.ToLower().Contains(nome.ToLower()));
+                ViewBag.ClienteSet = cliente;
+
+                return View();
+
+        }
+
 
 
         public ActionResult Form()

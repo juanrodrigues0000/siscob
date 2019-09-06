@@ -60,7 +60,7 @@
         </button>
     </div>
     <div>
-        <span id="quantidade">R$ 0,00</span>
+        <span id="quantidade" class="tm-block-title">R$ 0,00</span>
     </div>
 
 </div>
@@ -87,7 +87,7 @@
     function atualiza(resposta) {
     console.log(resposta);
         var elemento = $("#quantidade");
-        elemento.html(resposta);
+        elemento.html("R$ " + resposta);
       
     }
 

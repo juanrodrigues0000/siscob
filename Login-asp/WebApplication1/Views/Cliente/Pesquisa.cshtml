@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Pesquisa";
+}
+
+<table class="table table-hover tm-table-small tm-product-table">
+    <thead>
+        <h2 class="tm-block-title">Resultado da Pesquisa</h2>
+    </thead>
+    <tbody>
+        @foreach (var cliente in ViewBag.ClienteSet)
+        {
+            <tr>
+                <th scope="col">&nbsp;</th>
+
+                <td class="tm-product-name">@cliente.IdCliente</td>
+                <td>@cliente.NomeCompleto</td>
+                <td>@cliente.CPF</td>
+                <td>@cliente.CNPJ</td>
+                <td>@cliente.SituacaoJuridica</td>
+                <td>@cliente.Categoria</td>
+                <th scope="col">&nbsp;</th>
+
+                <td>
+                    <form action="/Cliente/Details" method="post">
+                        <input type="hidden" id="idcliente" name="idcliente" value="@cliente.IdCliente" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </td>
+
+                <td>
+                    <form action="/Cliente/Alterar" method="post">
+                        <input type="hidden" id="idcliente" name="idcliente" value="@cliente.IdCliente" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/Cliente/Remover" method="post">
+                        <input type="hidden" id="idcliente" name="idcliente" value="@cliente.IdCliente" />
+                        <button type="submit" class="tm-product-delete-link">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+

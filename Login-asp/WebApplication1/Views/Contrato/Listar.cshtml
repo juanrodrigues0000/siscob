@@ -3,6 +3,25 @@
     ViewBag.Title = "Listar";
 }
 
+
+<h2 class="tm-block-title">Faça sua pesquisa</h2>
+
+<form action="/Contrato/Pesquisa" method="post">
+    <div class="input-group md-form form-sm form-2 pl-0">
+        <input class="form-control my-0 py-1 lime-border" type="number" placeholder="Pesquise pelo ID" aria-label="Search"  id="idContrato" name="idContrato">
+        <div class="input-group-append">
+            <input type="hidden" id="idContrato" name="idContrato" value="idContrato" />
+            <button type="submit">
+                <span class="input-group-text lime lighten-2" id="idContrato">
+                    <i class="fas fa-search"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+</form>
+
+<th scope="col">&nbsp;</th>
+
 <div class="tm-product-table-container">
     <table class="table table-hover tm-table-small tm-product-table">
         <thead>
@@ -21,42 +40,42 @@
         <tbody>
             @foreach (var contrato in ViewBag.ContratoSet)
             {
-            <tr>
-                <th scope="col">&nbsp;</th>
-                <td class="tm-product-name">@contrato.IdCliente</td>
-                <td>@contrato.NomeTitular</td>
-                <td>@contrato.ValorContrato</td>
-                <td>@contrato.ValorEmAberto</td>
-                <td>@contrato.QuantidadeParcelas</td>
-                <td>@contrato.EmpresaIdEmpresa</td>
-                <th scope="col">&nbsp;</th>
+                <tr>
+                    <th scope="col">&nbsp;</th>
+                    <td class="tm-product-name">@contrato.IdCliente</td>
+                    <td>@contrato.NomeTitular</td>
+                    <td>@contrato.ValorContrato</td>
+                    <td>@contrato.ValorEmAberto</td>
+                    <td>@contrato.QuantidadeParcelas</td>
+                    <td>@contrato.EmpresaIdEmpresa</td>
+                    <th scope="col">&nbsp;</th>
 
-                <td>
-                    <form action="/Contrato/Details" method="post">
-                        <input type="hidden" id="idcontrato" name="idcontrato" value="@contrato.IdContrato" />
-                        <button type="submit" class="tm-product-delete-link">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </td>
+                    <td>
+                        <form action="/Contrato/Details" method="post">
+                            <input type="hidden" id="idcontrato" name="idcontrato" value="@contrato.IdContrato" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </td>
 
-                <td>
-                    <form action="/Contrato/Alterar" method="post">
-                        <input type="hidden" id="idcontrato" name="idcontrato" value="@contrato.IdContrato" />
-                        <button type="submit" class="tm-product-delete-link">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <form action="/Contrato/Remover" method="post">
-                        <input type="hidden" id="idcontrato" name="idcontrato" value="@contrato.IdContrato" />
-                        <button type="submit" class="tm-product-delete-link">
-                            <i class="far fa-trash-alt"></i>
-                        </button>
-                    </form>
-                </td>
-            </tr>
+                    <td>
+                        <form action="/Contrato/Alterar" method="post">
+                            <input type="hidden" id="idcontrato" name="idcontrato" value="@contrato.IdContrato" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/Contrato/Remover" method="post">
+                            <input type="hidden" id="idcontrato" name="idcontrato" value="@contrato.IdContrato" />
+                            <button type="submit" class="tm-product-delete-link">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

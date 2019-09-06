@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers
     public class ContratoController : Controller
     {
 
-        double valorEmAberto; // VARIÁVEL QUE SERÁ EDITADA PELA REGRA DE NEGÓCIO EM PAGAMENTO.CONTROLLER
+        double valorEmAberto = 0; // VARIÁVEL QUE SERÁ EDITADA PELA REGRA DE NEGÓCIO EM PAGAMENTO.CONTROLLER
 
         // GET: Contrato
         public ActionResult Adicionar(int idCliente, string nomeTitular, double valorContrato, int quantidadeParcelas, DateTime primeiroVencimento, string garantia, int empresaIdEmpresa)
@@ -26,11 +26,13 @@ namespace WebApplication1.Controllers
             contrato.IdCliente = idCliente;
             contrato.NomeTitular = nomeTitular;
             contrato.ValorContrato = valorContrato;
-            contrato.ValorEmAberto = valorEmAberto;
             contrato.QuantidadeParcelas = quantidadeParcelas;
             contrato.PrimeiroVencimento = primeiroVencimento;
             contrato.Garantia = garantia;
             contrato.EmpresaIdEmpresa = empresaIdEmpresa;
+
+
+            contrato.ValorEmAberto = valorEmAberto;
 
             dao.Adicionar(contrato);
             
@@ -50,9 +52,10 @@ namespace WebApplication1.Controllers
 
                 PagamentoDAO daoPagamento = new PagamentoDAO();
                 pagamento.ValorIntegralDaParcela = valorParcela;
-                pagamento.ContratoIdContrato = contrato.IdContrato; 
+                pagamento.Status = 0;
+                pagamento.IdContrato = contrato.IdContrato; 
                                         // ^ Metodo precisa vir depois de ADICIONAR CONTRATO, para que ele tenha uma ID pra ser registrada na table pagamentos
-                pagamento.ClienteIdCliente = idCliente;
+                pagamento.IdCliente = idCliente;
                 // ^ Este dado não é pedido na entidade CONTRATO
 
                 pagamento.DataVencimento = primeiroVencimento.AddMonths(i);
@@ -65,7 +68,7 @@ namespace WebApplication1.Controllers
 
             dao.Alterar(contrato);
 
-            return View();
+            return RedirectToAction("Form");
 
         }
 
@@ -95,7 +98,8 @@ namespace WebApplication1.Controllers
             ContratoDAO dao = new ContratoDAO();
             var contrato = dao.Listar().FirstOrDefault(x => x.IdContrato == idcontrato);
             dao.Remover(contrato);
-            return View();
+
+            return RedirectToAction("Listar");
         }
 
         public ActionResult Details(int idContrato)
@@ -104,7 +108,7 @@ namespace WebApplication1.Controllers
             PagamentoDAO daoPgto = new PagamentoDAO();
 
             ViewBag.ContratoSet = dao.Listar().FirstOrDefault(x => x.IdContrato == idContrato);
-            ViewBag.PagamentoSet = daoPgto.Listar().FirstOrDefault(x => x.ContratoIdContrato == idContrato);
+            ViewBag.PagamentoSet = daoPgto.Listar().FirstOrDefault(x => x.IdContrato == idContrato);
 
             return View();
         }
@@ -118,7 +122,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult AlteraContrato(int idContrato, string nomeTitular, double valorContrato,
+        public ActionResult AlteraContrato(int idContrato, string nomeTitular, double valorContrato, double valorEmAberto,
                                                                     int quantidadeParcelas, DateTime primeiroVencimento, string garantia, int empresaIdEmpresa)
         {
 
@@ -127,6 +131,7 @@ namespace WebApplication1.Controllers
             contrato.IdCliente = contrato.IdCliente;
             contrato.NomeTitular = nomeTitular;
             contrato.ValorContrato = valorContrato;
+            contrato.ValorEmAberto = valorEmAberto;
             contrato.QuantidadeParcelas = quantidadeParcelas;
             contrato.PrimeiroVencimento = primeiroVencimento;
             contrato.Garantia = garantia;
@@ -137,6 +142,20 @@ namespace WebApplication1.Controllers
             return View(contrato);
 
         }
+
+        public ActionResult Pesquisa(int idContrato)
+        {
+
+            ContratoDAO dao = new ContratoDAO();
+            IList<Contrato> ct = dao.Listar();
+            var contrato = ct.Where(a => a.IdContrato == idContrato);
+            ViewBag.ContratoSet = contrato;
+
+            return View();
+
+        }
+
+
         public ActionResult Form()
         {
             return View();
