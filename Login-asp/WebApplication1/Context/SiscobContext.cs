@@ -16,8 +16,6 @@ namespace WebApplication1.Context
         public DbSet<Pagamento> PagamentoSet { get; set; }
         public DbSet<Contrato> ContratoSet { get; set; }
 
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
             optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AgoraDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");

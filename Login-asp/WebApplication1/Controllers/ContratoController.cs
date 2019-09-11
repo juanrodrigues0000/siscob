@@ -106,11 +106,14 @@ namespace WebApplication1.Controllers
         { 
             ContratoDAO dao = new ContratoDAO();
             PagamentoDAO daoPgto = new PagamentoDAO();
+            ClienteDAO Cldao = new ClienteDAO();
+            Cliente cliente = new Cliente();
 
+            ViewBag.ClienteSet = dao.Listar().FirstOrDefault(X => X.IdContrato == idContrato);
             ViewBag.ContratoSet = dao.Listar().FirstOrDefault(x => x.IdContrato == idContrato);
             ViewBag.PagamentoSet = daoPgto.Listar().FirstOrDefault(x => x.IdContrato == idContrato);
 
-            return View();
+            return View("Details");
         }
 
 

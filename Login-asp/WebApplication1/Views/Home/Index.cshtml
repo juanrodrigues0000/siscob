@@ -1,18 +1,88 @@
 ﻿@{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://templatemo.com/templates/templatemo_524_product_admin/ -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<p>Blablabla</p>
-<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
-<form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post">
-    <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
-    <input type="hidden" name="code" value="2DCDACD9AEAE2421148A5FBCCB79B5A8" />
-    <input type="hidden" name="iot" value="button" />
-    <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/209x48-pagar-azul-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
-</form>
-<!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Product Admin - Dashboard HTML Template</title>
+    <link rel="stylesheet" href="./css">
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" href="./fontawesome.min.css">
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="./templatemo-style.css">
+    <!--
+    Product Admin CSS Template
+    https://templatemo.com/tm-524-product-admin
+    -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.wrap').on('click', function (e) {
+                e.preventDefault();
+                var href = $(this).find("iframe").attr("src");
+                window.open(href, '_blank');
+            });
+        });
+    </script>
+    <style>
+        iframe {
+            pointer-events: none;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+</head>
 
 
+
+
+
+
+            <script src="./jquery-3.3.1.min.js.download"></script>
+            <!-- https://jquery.com/download/ -->
+            <script src="./moment.min.js.download"></script>
+            <!-- https://momentjs.com/ -->
+            <script src="./Chart.min.js.download"></script>
+            <!-- http://www.chartjs.org/docs/latest/ -->
+            <script src="./bootstrap.min.js.download"></script>
+            <!-- https://getbootstrap.com/ -->
+            <script src="./tooplate-scripts.js.download"></script>
+            <script>
+                Chart.defaults.global.defaultFontColor = 'white';
+                let ctxLine,
+                    ctxBar,
+                    ctxPie,
+                    optionsLine,
+                    optionsBar,
+                    optionsPie,
+                    configLine,
+                    configBar,
+                    configPie,
+                    lineChart;
+                barChart, pieChart;
+                // DOM is ready
+                $(function () {
+                    drawLineChart(); // Line Chart
+                    drawBarChart(); // Bar Chart
+                    drawPieChart(); // Pie Chart
+
+                    $(window).resize(function () {
+                        updateLineChart();
+                        updateBarChart();
+                    });
+                })
+            </script>
+
+</body>
+</html>

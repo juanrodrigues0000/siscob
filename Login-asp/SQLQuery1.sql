@@ -1,0 +1,1 @@
+﻿SELECT * FROM PagamentoSet WHERE Status != 1;

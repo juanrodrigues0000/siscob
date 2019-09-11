@@ -47,10 +47,10 @@ namespace WebApplication1.Controllers
             dao.Remover(documento);
             return View();
         }
-        public ActionResult Details(int idDocumento)
+        public ActionResult Details(int iddocumento)
         {
             DocumentoDAO dao = new DocumentoDAO();
-            ViewBag.DocumentoSet = dao.Listar().FirstOrDefault(x => x.IdDocumento == idDocumento);
+            ViewBag.DocumentoSet = dao.Listar().FirstOrDefault(x => x.IdDocumento == iddocumento);
 
             return View();
         }

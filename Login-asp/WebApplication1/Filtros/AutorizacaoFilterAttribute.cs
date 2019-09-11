@@ -11,7 +11,7 @@ namespace WebApplication1.Filtros
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-               object usuario = filterContext.HttpContext.Session["funcionarioLogado"];
+            object usuario = filterContext.HttpContext.Session["adminLogado"];
             if (usuario == null)
             {
                 filterContext.Result = new RedirectToRouteResult(

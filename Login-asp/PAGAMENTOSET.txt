@@ -1,0 +1,8 @@
+CREATE TABLE [dbo].[PagamentoSet] (
+    [IdPagamento]            INT        IDENTITY (1, 1) NOT NULL,
+    [ValorIntegralDaParcela] FLOAT (53) NOT NULL,
+    [Status]                 INT        NOT NULL,
+    [DataVencimento]         DATE       NOT NULL,
+    [IdContrato]             INT        NOT NULL,
+    [IdCliente]              INT        NOT NULL
+);

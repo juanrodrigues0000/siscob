@@ -370,3 +370,12 @@ C:\Users\stag009\Desktop\Login-asp\WebApplication1\obj\Debug\WebApplication1.csp
 C:\Users\stag009\Desktop\Login-asp\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\stag009\Desktop\Login-asp\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\stag009\Desktop\Login-asp\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Benner\siscob\Login-asp\WebApplication1\bin\BouncyCastle.Crypto.dll
+C:\Benner\siscob\Login-asp\WebApplication1\bin\PagarMe.dll
+C:\Benner\siscob\Login-asp\WebApplication1\bin\System.Net.Http.Formatting.dll
+C:\Benner\siscob\Login-asp\WebApplication1\bin\System.Web.Http.dll
+C:\Benner\siscob\Login-asp\WebApplication1\bin\System.Web.Http.WebHost.dll
+C:\Benner\siscob\Login-asp\WebApplication1\bin\BouncyCastle.Crypto.pdb
+C:\Benner\siscob\Login-asp\WebApplication1\bin\System.Net.Http.Formatting.xml
+C:\Benner\siscob\Login-asp\WebApplication1\bin\System.Web.Http.xml
+C:\Benner\siscob\Login-asp\WebApplication1\bin\System.Web.Http.WebHost.xml

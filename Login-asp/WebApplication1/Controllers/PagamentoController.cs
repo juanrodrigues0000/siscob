@@ -137,7 +137,7 @@ namespace WebApplication1.Controllers
 
             PagamentoDAO dao = new PagamentoDAO();
             IList<Pagamento> pagamentos = dao.Listar();
-            var Pagamento = pagamentos.Where(a => a.IdPagamento == idpagamento);
+            var Pagamento = pagamentos.Where(a => a.IdCliente == idpagamento);
             ViewBag.PagamentoSet = Pagamento;
 
             return View();

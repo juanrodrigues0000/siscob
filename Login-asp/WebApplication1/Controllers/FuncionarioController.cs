@@ -75,7 +75,7 @@ namespace WebApplication1.Controllers
 
             dao.Alterar(funcionario);
 
-            return View(funcionario);
+            return View("Listar");
 
         }
 

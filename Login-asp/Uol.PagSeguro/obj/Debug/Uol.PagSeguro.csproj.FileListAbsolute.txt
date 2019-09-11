@@ -1,7 +1,0 @@
-C:\Github\siscob\Login-asp\Uol.PagSeguro\bin\Debug\Uol.PagSeguro.XML
-C:\Github\siscob\Login-asp\Uol.PagSeguro\bin\Debug\Uol.PagSeguro.dll
-C:\Github\siscob\Login-asp\Uol.PagSeguro\bin\Debug\Uol.PagSeguro.pdb
-C:\Github\siscob\Login-asp\Uol.PagSeguro\obj\Debug\Uol.PagSeguro.csprojAssemblyReference.cache
-C:\Github\siscob\Login-asp\Uol.PagSeguro\obj\Debug\Uol.PagSeguro.csproj.CoreCompileInputs.cache
-C:\Github\siscob\Login-asp\Uol.PagSeguro\obj\Debug\Uol.PagSeguro.dll
-C:\Github\siscob\Login-asp\Uol.PagSeguro\obj\Debug\Uol.PagSeguro.pdb

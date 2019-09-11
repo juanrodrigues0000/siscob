@@ -44,15 +44,15 @@ namespace WebApplication1.Controllers
             ClienteDAO dao = new ClienteDAO();
             var cliente = dao.Listar().FirstOrDefault(x => x.IdCliente == idcliente);
             dao.Remover(cliente);
-            return View();
+            return View("Listar");
         }
 
-        public ActionResult Details(int idCliente)
+        public ActionResult Details(int idcliente)
         {
             ClienteDAO dao = new ClienteDAO();
-            ViewBag.ClienteSet = dao.Listar().FirstOrDefault(x => x.IdCliente == idCliente);
+            ViewBag.ClienteSet = dao.Listar().FirstOrDefault(x => x.IdCliente == idcliente);
 
-            return RedirectToAction("Listar");
+            return View();
         }
 
         [HttpPost]
@@ -97,10 +97,7 @@ namespace WebApplication1.Controllers
                 ViewBag.ClienteSet = cliente;
 
                 return View();
-
         }
-
-
 
         public ActionResult Form()
         {

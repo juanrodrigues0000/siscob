@@ -19,7 +19,12 @@ namespace WebApplication1.Controllers
         {
             FuncionarioDAO dao = new FuncionarioDAO();
             Funcionario funcionario = dao.Busca(login, senha);
-            if (funcionario != null)
+            if (funcionario != null && login == "admin" && senha == "admin")
+            {
+                Session["adminLogado"] = funcionario;
+                return RedirectToAction ("Index", "Home");
+            }
+            if (funcionario != null && login != "admin")
             {
                 Session["funcionarioLogado"] = funcionario;
                 return RedirectToAction("Index", "Home");
